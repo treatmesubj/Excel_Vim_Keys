@@ -11,3 +11,21 @@
 ## Reference
 - [ExcelLikeVim](https://github.com/kjnh10/ExcelLikeVim)
 - [xlpro.tips](https://xlpro.tips/posts/excel-and-vim/)
+
+### Listen Keys
+- [GetAsyncKeyState](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getasynckeystate)
+    - [Snake](https://github.com/Vitosh/VBA_personal/blob/f5d8fb859e824df998fb2c21383f94c6d57f7242/Algorithms/Games/SnakeAttempt.vb)
+```
+Private Sub ReadKey()
+    Select Case True
+        Case GetAsyncKeyState(vbKeyUp):
+            movingDirection = GoUp
+        Case GetAsyncKeyState(vbKeyRight):
+            movingDirection = GoRight
+        Case GetAsyncKeyState(vbKeyDown):
+            movingDirection = GoDown
+        Case GetAsyncKeyState(vbKeyLeft):
+            movingDirection = GoLeft
+    End Select
+End Sub
+```
