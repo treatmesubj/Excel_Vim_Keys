@@ -1,5 +1,4 @@
 Rem Attribute VBA_ModuleType=VBAModule
-' Option VBASupport 1
 Sub setup_shortcuts()
   Application.OnKey "h", "go_left"
   Application.OnKey "j", "go_down"
@@ -24,18 +23,36 @@ Sub setup_shortcuts()
   Application.OnKey "w", "go_contiguous_right"
   Application.OnKey "e", "go_contiguous_right"
 
-  'Application.OnKey "+h", "go_top_of_viewport"
+  Application.OnKey "+h", "go_top_of_viewport"
   Application.OnKey "^u", "page_up" 
-  'Application.OnKey "+l", "go_bottom_of_viewport"
+  Application.OnKey "+l", "go_bottom_of_viewport"
   Application.OnKey "^d", "page_down"
   Application.OnKey "+4", "go_end_of_row_values" '$
   Application.OnKey "0", "go_begin_of_row"
   Application.OnKey "+-", "go_begin_of_row_values" '_
 
-  Application.OnKey "y", "copy_selected"
+  Application.OnKey "v", "setup_v_mode_shortcuts" 
+
   Application.OnKey "p", "paste_values"
 
   Application.OnKey "/", "do_search"
+End Sub
+
+Sub setup_v_mode_shortcuts()
+  'Call teardown_shortcuts
+  Application.OnKey "h", "visual_left"
+  Application.OnKey "j", "visual_down"
+  Application.OnKey "k", "visual_up"
+  Application.OnKey "l", "visual_right"
+
+  Application.OnKey "y", "copy_selected"
+
+  Application.OnKey "v", "teardown_v_mode_shortcuts"
+End Sub
+
+Sub teardown_v_mode_shortcuts()
+  Application.OnKey "y"
+  Call setup_shortcuts
 End Sub
 
 Sub teardown_shortcuts()
@@ -69,8 +86,9 @@ Sub teardown_shortcuts()
   Application.OnKey "+4"
   Application.OnKey "0"
   Application.OnKey "+-"
+  
+  Application.OnKey "v"
 
-  Application.OnKey "y"
   Application.OnKey "p"
 
   Application.OnKey "/"
