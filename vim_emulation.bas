@@ -80,7 +80,7 @@ End Sub
 ' contiguous left, right
 Public Sub go_contiguous_left()
   Dim row As Long: Dim col As Long
-  row = Selection.row: col = Selection.End(xlToLeft).Column ' this row, next cell to left
+  row = Selection.row: col = Selection.End(xlToLeft).Column ' this row, next contig cell to left
   Cells(row, col).Select: col = Selection.Column
   If (IsEmpty(Selection) Or col = 1) And row > 1 Then ' if nothing
     Cells(row - 1, 16384).Select ' go up row to right edge
@@ -92,7 +92,7 @@ Public Sub go_contiguous_left()
 End Sub
 Public Sub go_contiguous_right()
   Dim row As Long: Dim col As Long
-  row = Selection.row: col = Selection.End(xlToRight).Column ' this row, next cell to right
+  row = Selection.row: col = Selection.End(xlToRight).Column ' this row, next contig cell to right
   Cells(row, col).Select: col = Selection.Column
   If (IsEmpty(Selection) Or col = 16384) Then ' if nothing
     Cells(row+1, 1).Select ' go down row to left edge
