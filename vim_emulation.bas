@@ -146,3 +146,15 @@ End Sub
 Public Sub do_search()
   Application.SendKeys "^f"
 End Sub
+
+' copy
+Public Sub copy_selected()
+  Selection.Copy
+End Sub
+
+' paste
+Public Sub paste_values()
+  If Application.CutCopyMode Then
+    Selection.PasteSpecial Paste:=xlPasteValues
+  End If
+End Sub

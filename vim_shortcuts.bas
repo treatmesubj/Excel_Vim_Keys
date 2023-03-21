@@ -32,6 +32,9 @@ Sub setup_shortcuts()
   Application.OnKey "0", "go_begin_of_row"
   Application.OnKey "+-", "go_begin_of_row_values" '_
 
+  Application.OnKey "y", "copy_selected"
+  Application.OnKey "p", "paste_values"
+
   Application.OnKey "/", "do_search"
 End Sub
 
@@ -66,6 +69,9 @@ Sub teardown_shortcuts()
   Application.OnKey "+4"
   Application.OnKey "0"
   Application.OnKey "+-"
+
+  Application.OnKey "y"
+  Application.OnKey "p"
 
   Application.OnKey "/"
 End Sub
