@@ -45,6 +45,14 @@ Sub setup_v_mode_shortcuts()
   Application.OnKey "k", "visual_up"
   Application.OnKey "l", "visual_right"
 
+  'Application.OnKey "b", "visual_contiguous_left"
+  'Application.OnKey "w", "visual_contiguous_right"
+  'Application.OnKey "e", "visual_contiguous_right"
+
+  'Application.OnKey "+4", "visual_end_of_row_values" '$
+  'Application.OnKey "0", "visual_begin_of_row"
+  'Application.OnKey "+-", "visual_begin_of_row_values" '_
+
   Application.OnKey "y", "copy_selected"
 
   Application.OnKey "v", "teardown_v_mode_shortcuts"
