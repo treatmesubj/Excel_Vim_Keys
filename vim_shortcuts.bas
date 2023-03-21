@@ -79,9 +79,9 @@ Sub teardown_shortcuts()
   Application.OnKey "w"
   Application.OnKey "e"
 
-  'Application.OnKey "+h"
+  Application.OnKey "+h"
   Application.OnKey "^u"
-  'Application.OnKey "+l"
+  Application.OnKey "+l"
   Application.OnKey "^d"
   Application.OnKey "+4"
   Application.OnKey "0"
