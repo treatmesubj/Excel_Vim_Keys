@@ -15,7 +15,8 @@ Public Sub go_right()
   Application.SendKeys "{RIGHT}"
 End Sub
 ' visual up, down, left, right
-Public Sub visual_up()
+' TODO: recoil towards start-cell
+Public Sub visual_up(start_row As Long, start_col As Long)
   Dim top_row As Long: Dim left_col As Long
   top_row = Selection.row: left_col = Selection.Column
   Dim start_range as Range: Set start_range = Selection
@@ -24,7 +25,7 @@ Public Sub visual_up()
     Range(start_range, end_range).Select
   End If
 End Sub
-Public Sub visual_down()
+Public Sub visual_down(start_row As Long, start_col As Long)
   Dim top_row As Long: Dim left_col As Long
   top_row = Selection.row: left_col = Selection.Column
   Dim bottom_row As Long
@@ -35,7 +36,7 @@ Public Sub visual_down()
     Range(start_range, end_range).Select
   End If
 End Sub
-Public Sub visual_left()
+Public Sub visual_left(start_row As Long, start_col As Long)
   Dim top_row As Long: Dim left_col As Long
   top_row = Selection.row: left_col = Selection.Column
   Dim start_range as Range: Set start_range = Selection
@@ -44,7 +45,7 @@ Public Sub visual_left()
     Range(start_range, end_range).Select
   End If
 End Sub
-Public Sub visual_right()
+Public Sub visual_right(start_row As Long, start_col As Long)
   Dim top_row As Long: Dim left_col As Long
   top_row = Selection.row: left_col = Selection.Column
   Dim right_col As Long
@@ -136,13 +137,11 @@ End Sub
 
 ' big movements
 Public Sub go_top_of_viewport()
-  Dim w As Window
-  Set w = ActiveWindow
+  Dim w As Window: Set w = ActiveWindow
   Cells(w.ScrollRow, Selection.Column).Select
 End Sub
 Public Sub go_begin_of_row()
-  Dim row As Long
-  row = Selection.row
+  Dim row As Long: row = Selection.row
   Cells(row, 1).Select
 End Sub
 Public Sub go_begin_of_row_values()
@@ -163,13 +162,11 @@ Public Sub go_end_of_row_values()
 End Sub
 Public Sub go_bottom_of_viewport()
   Dim new_view_row As Long, old_view_row As Long
-  Dim w As Window
-  Set w = ActiveWindow
+  Dim w As Window: Set w = ActiveWindow
   old_view_row = w.ScrollRow
   Application.ScreenUpdating = False
   w.LargeScroll Down:=1
-  new_view_row = w.ScrollRow
-  w.ScrollRow = old_view_row
+  new_view_row = w.ScrollRow: w.ScrollRow = old_view_row
   Application.ScreenUpdating = True
   Cells(new_view_row - 1, Selection.Column).Select
 End Sub

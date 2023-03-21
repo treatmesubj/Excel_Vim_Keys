@@ -39,11 +39,14 @@ Sub setup_shortcuts()
 End Sub
 
 Sub setup_v_mode_shortcuts()
-  'Call teardown_shortcuts
-  Application.OnKey "h", "visual_left"
-  Application.OnKey "j", "visual_down"
-  Application.OnKey "k", "visual_up"
-  Application.OnKey "l", "visual_right"
+  Call teardown_shortcuts
+  Dim start_row As Long: Dim start_col As Long
+  start_row = Selection.Row: start_col = Selection.Column
+
+  Application.OnKey "h", "'visual_left """ & start_row & """, " & start_col & " '"
+  Application.OnKey "j", "'visual_down """ & start_row & """, " & start_col & " '"
+  Application.OnKey "k", "'visual_up """ & start_row & """, " & start_col & " '"
+  Application.OnKey "l", "'visual_right """ & start_row & """, " & start_col & " '"
 
   'Application.OnKey "b", "visual_contiguous_left"
   'Application.OnKey "w", "visual_contiguous_right"
@@ -56,10 +59,12 @@ Sub setup_v_mode_shortcuts()
   Application.OnKey "y", "copy_selected"
 
   Application.OnKey "v", "teardown_v_mode_shortcuts"
+  Application.OnKey "{ESC}", "teardown_v_mode_shortcuts"
 End Sub
 
 Sub teardown_v_mode_shortcuts()
   Application.OnKey "y"
+  Application.OnKey "{ESC}"
   Call setup_shortcuts
 End Sub
 
@@ -100,4 +105,8 @@ Sub teardown_shortcuts()
   Application.OnKey "p"
 
   Application.OnKey "/"
+
+  Application.OnKey "y"
+  Application.OnKey "{ESC}"
+ 
 End Sub
