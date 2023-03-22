@@ -36,7 +36,7 @@ Sub setup_shortcuts()
   Application.OnKey "p", "paste_values"
 
   Application.OnKey "u", "undo"
-  Applicatton.OnKey "^r", "redo"
+  Application.OnKey "^r", "redo"
 
   Application.OnKey "/", "do_search"
 End Sub
