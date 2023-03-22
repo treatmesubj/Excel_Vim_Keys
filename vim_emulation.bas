@@ -266,3 +266,11 @@ Public Sub paste_values()
     Selection.PasteSpecial Paste:=xlPasteValues
   End If
 End Sub
+
+' undo & redo
+Public Sub undo()
+  Application.SendKeys "^z"
+End Sub
+Public Sub redo()
+  Application.SendKeys "^y"
+End Sub

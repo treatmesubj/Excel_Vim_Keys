@@ -31,7 +31,7 @@
 |`{SHIFT}`+`i`|edit left-most value in row|
 |`o`|insert row below|
 |`{SHIFT}`+`o`|insert row above|
-|`x`|delete cell|
+|`x`|delete|
 |`b`|move contiguous left|
 |`w`|move contiguous right|
 |`e`|move contiguous right|
@@ -45,6 +45,8 @@
 |`v`|start `visual` mode|
 |`P`|paste values|
 |`p`|paste values|
+|`u`|undo|
+|`{CNTRL}`+`r`|redo|
 |`/`|search|
 
 **Visual Mode**
