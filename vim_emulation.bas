@@ -260,6 +260,12 @@ Public Sub copy_selected()
   Call teardown_v_mode_shortcuts
 End Sub
 
+' cut
+Public Sub cut_selected()
+  Selection.Cut
+  Call teardown_v_mode_shortcuts
+End Sub
+
 ' paste
 Public Sub paste_values()
   If Application.CutCopyMode Then

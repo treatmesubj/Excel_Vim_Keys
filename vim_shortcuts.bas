@@ -47,9 +47,11 @@ Sub setup_v_mode_shortcuts()
   start_row = Selection.Row: start_col = Selection.Column
 
   Application.OnKey "h", "'visual_left """ & start_row & """, " & start_col & " '"
+  Application.OnKey "{BS}", "'visual_left """ & start_row & """, " & start_col & " '"
   Application.OnKey "j", "'visual_down """ & start_row & """, " & start_col & " '"
   Application.OnKey "k", "'visual_up """ & start_row & """, " & start_col & " '"
   Application.OnKey "l", "'visual_right """ & start_row & """, " & start_col & " '"
+  Application.OnKey " ", "'visual_right """ & start_row & """, " & start_col & " '"
 
   'Application.OnKey "b", "visual_contiguous_left"
   'Application.OnKey "w", "visual_contiguous_right"
@@ -60,7 +62,7 @@ Sub setup_v_mode_shortcuts()
   'Application.OnKey "+-", "visual_begin_of_row_values" '_
 
   Application.OnKey "x", "delete_selected"
-  Application.OnKey "d", "delete_selected"
+  Application.OnKey "d", "cut_selected"
   Application.OnKey "y", "copy_selected"
 
   Application.OnKey "v", "teardown_v_mode_shortcuts"
@@ -92,6 +94,7 @@ Sub teardown_shortcuts()
   'Application.OnKey "dd"
   'Application.OnKey "dw"
   Application.OnKey "x"
+  Application.OnKey "d"
 
   Application.OnKey "b"
   Application.OnKey "w"

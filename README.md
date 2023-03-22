@@ -15,8 +15,7 @@
 2. Skip to step 4 above
 
 # Keys
-
-**Normal Mode**
+### Normal Mode
 |key|action|
 |---|---|
 |`h`|move left|
@@ -43,22 +42,26 @@
 |`{SHIFT}`+`a`|move to column `A` in row|
 |`{SHIFT}`+`-`|move to left-most value in row|
 |`v`|start `visual` mode|
-|`P`|paste values|
 |`p`|paste values|
+|`P`|paste values|
 |`u`|undo|
 |`{CNTRL}`+`r`|redo|
 |`/`|search|
 
-**Visual Mode**
+### Visual Mode
 |key|action|
 |---|---|
-|||
-|||
-|||
-|||
-|||
-|||
-|||
+|`h`|move left|
+|`j`|move down|
+|`k`|move up|
+|`l`|move right|
+|`{BKSP}`|move left|
+|`{SPACE}`|move right|
+|`x`|delete|
+|`d`|cut|
+|`y`|copy|
+|`v`|exit visual mode to normal mode|
+|`{ESC}`|exit visual mode to normal mode|
 
 ---
 
