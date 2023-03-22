@@ -269,6 +269,7 @@ End Sub
 ' paste
 Public Sub paste_values()
   If Application.CutCopyMode Then
+    On Error Resume Next
     Selection.PasteSpecial Paste:=xlPasteValues
   End If
   Call teardown_v_mode_shortcuts
