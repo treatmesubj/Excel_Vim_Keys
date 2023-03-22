@@ -139,6 +139,7 @@ Public Sub edit_begin()
   Application.SendKeys "{HOME}"
 End Sub
 Public Sub edit_end()
+Application.ScreenUpdating = False
   Dim row As Long: Dim col As Long
   row = Selection.row
   Cells(row, 16384).Select
@@ -146,10 +147,12 @@ Public Sub edit_end()
   Cells(row, col).Select
   Call edit
   Application.SendKeys "{END}"
+Application.ScreenUpdating = True
 End Sub
 
 ' contiguous left, right
 Public Sub go_contiguous_left()
+Application.ScreenUpdating = False
   Dim row As Long: Dim col As Long
   row = Selection.row: col = Selection.End(xlToLeft).Column ' this row, next contig cell to left
   Cells(row, col).Select: col = Selection.Column
@@ -160,8 +163,10 @@ Public Sub go_contiguous_left()
       Cells(row, col).Select
     End If
   End If
+Application.ScreenUpdating = True
 End Sub
 Public Sub go_contiguous_right()
+Application.ScreenUpdating = False
   Dim row As Long: Dim col As Long
   row = Selection.row: col = Selection.End(xlToRight).Column ' this row, next contig cell to right
   Cells(row, col).Select: col = Selection.Column
@@ -175,6 +180,7 @@ Public Sub go_contiguous_right()
       End If
     End If
   End If
+Application.ScreenUpdating = True
 End Sub
 
 ' insert rows 
@@ -215,6 +221,7 @@ Public Sub go_begin_of_row()
   Cells(row, 1).Select
 End Sub
 Public Sub go_begin_of_row_values()
+Application.ScreenUpdating = False 
   Call go_begin_of_row
   Dim row As Long: Dim col As Long
   row = Selection.row: col = Selection.End(xlToRight).Column
@@ -222,23 +229,26 @@ Public Sub go_begin_of_row_values()
   If IsEmpty(Selection) Then
     Cells(row, 1).Select
   End If
+Application.ScreenUpdating = True
 End Sub
 Public Sub go_end_of_row_values()
+Application.ScreenUpdating = False
   Dim row As Long: Dim col As Long
   row = Selection.row
   Cells(row, 16384).Select
   col = Selection.End(xlToLeft).Column
   Cells(row, col).Select
+Application.ScreenUpdating = True
 End Sub
 Public Sub go_bottom_of_viewport()
+Application.ScreenUpdating = False
   Dim new_view_row As Long, old_view_row As Long
   Dim w As Window: Set w = ActiveWindow
   old_view_row = w.ScrollRow
-  Application.ScreenUpdating = False
   w.LargeScroll Down:=1
   new_view_row = w.ScrollRow: w.ScrollRow = old_view_row
-  Application.ScreenUpdating = True
   Cells(new_view_row - 1, Selection.Column).Select
+Application.ScreenUpdating = True
 End Sub
 Public Sub page_up()
   Application.SendKeys "{PGUP}"
