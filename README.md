@@ -42,7 +42,7 @@
 |`{SHIFT}`+`a`|move to column `A` in row|
 |`{SHIFT}`+`-`|move to left-most value in row|
 |`v`|start `visual` mode|
-|`p`|paste values|
+|`p`|paste|
 |`P`|paste values|
 |`u`|undo|
 |`{CNTRL}`+`r`|redo|
@@ -60,6 +60,8 @@
 |`x`|delete|
 |`d`|cut|
 |`y`|copy|
+|`p`|paste|
+|`P`|paste values|
 |`v`|exit visual mode to normal mode|
 |`{ESC}`|exit visual mode to normal mode|
 

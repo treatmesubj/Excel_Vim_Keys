@@ -271,7 +271,15 @@ Public Sub paste_values()
   If Application.CutCopyMode Then
     Selection.PasteSpecial Paste:=xlPasteValues
   End If
+  Call teardown_v_mode_shortcuts
 End Sub
+Public Sub paste()
+  If Application.CutCopyMode Then
+    ActiveSheet.paste
+  End If
+  Call teardown_v_mode_shortcuts
+End Sub
+
 
 ' undo & redo
 Public Sub undo()

@@ -33,7 +33,7 @@ Sub setup_shortcuts()
   Application.OnKey "v", "setup_v_mode_shortcuts" 
 
   Application.OnKey "P", "paste_values"
-  Application.OnKey "p", "paste_values"
+  Application.OnKey "p", "paste"
 
   Application.OnKey "u", "undo"
   Application.OnKey "^r", "redo"
@@ -64,6 +64,8 @@ Sub setup_v_mode_shortcuts()
   Application.OnKey "x", "delete_selected"
   Application.OnKey "d", "cut_selected"
   Application.OnKey "y", "copy_selected"
+  Application.OnKey "P", "paste_values"
+  Application.OnKey "p", "paste"
 
   Application.OnKey "v", "teardown_v_mode_shortcuts"
   Application.OnKey "{ESC}", "teardown_v_mode_shortcuts"
@@ -72,6 +74,7 @@ End Sub
 Sub teardown_v_mode_shortcuts()
   Application.OnKey "y"
   Application.OnKey "{ESC}"
+  Application.OnKey "d"
   Call setup_shortcuts
 End Sub
 
