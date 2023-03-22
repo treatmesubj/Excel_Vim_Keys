@@ -18,8 +18,9 @@ End Sub
 Public Sub visual_up(start_row As Long, start_col As Long)
   Dim start_range As Range: Set start_range = Cells(start_row, start_col)
   Dim top_row As Long: top_row = Selection.row
-  Dim left_col As Long: left_col = Selection.Column
   Dim bottom_row As Long: bottom_row = top_row + Selection.Rows.Count - 1
+  Dim left_col As Long: left_col = Selection.Column
+  Dim right_col As Long: right_col = Selection.Columns.Count + left_col - 1
   Dim cur_range As Range: Set cur_range = Selection
   Dim end_range As Range
   If top_row > 1 And top_row < start_row Then
@@ -31,33 +32,50 @@ Public Sub visual_up(start_row As Long, start_col As Long)
   End If
 End Sub
 Public Sub visual_down(start_row As Long, start_col As Long)
-  Dim top_row As Long: Dim left_col As Long
-  top_row = Selection.row: left_col = Selection.Column
-  Dim bottom_row As Long
-  bottom_row = top_row + Selection.Rows.Count - 1 
-  Dim cur_range as Range: Set cur_range = Selection
+  Dim start_range As Range: Set start_range = Cells(start_row, start_col)
+  Dim top_row As Long: top_row = Selection.row
+  Dim bottom_row As Long: bottom_row = top_row + Selection.Rows.Count - 1
+  Dim left_col As Long: left_col = Selection.Column
+  Dim right_col As Long: right_col = Selection.Columns.Count + left_col - 1
+  Dim cur_range As Range: Set cur_range = Selection
+  Dim end_range As Range
   If bottom_row < 1048576 Then
-    Dim end_range as Range: Set end_range = Cells(bottom_row + 1, left_col)
+    Set end_range = Cells(bottom_row + 1, left_col)
     Range(cur_range, end_range).Select
+  Else
+    Set end_range = Cells(top_row + 1, left_col)
+    Range(cur_range, end_range).Select  
   End If
 End Sub
 Public Sub visual_left(start_row As Long, start_col As Long)
-  Dim top_row As Long: Dim left_col As Long
-  top_row = Selection.row: left_col = Selection.Column
-  Dim cur_range as Range: Set cur_range = Selection
-  If left_col > 1 Then
-    Dim end_range as Range: Set end_range = Cells(top_row, left_col - 1)
+  Dim start_range As Range: Set start_range = Cells(start_row, start_col)
+  Dim top_row As Long: top_row = Selection.row
+  Dim bottom_row As Long: bottom_row = top_row + Selection.Rows.Count - 1
+  Dim left_col As Long: left_col = Selection.Column
+  Dim right_col As Long: right_col = Selection.Columns.Count + left_col - 1
+  Dim cur_range As Range: Set cur_range = Selection
+  Dim end_range As Range
+  If left_col > 1 And left_col < start_col Then
+    Set end_range = Cells(top_row, left_col - 1)
+    Range(cur_range, end_range).Select
+  Else
+    Set end_range = Cells(top_row, ) 'TODO
     Range(cur_range, end_range).Select
   End If
 End Sub
 Public Sub visual_right(start_row As Long, start_col As Long)
-  Dim top_row As Long: Dim left_col As Long
-  top_row = Selection.row: left_col = Selection.Column
-  Dim right_col As Long
-  right_col = Selection.Columns.Count + left_col - 1
-  Dim cur_range as Range: Set cur_range = Selection
+  Dim start_range As Range: Set start_range = Cells(start_row, start_col)
+  Dim top_row As Long: top_row = Selection.row
+  Dim bottom_row As Long: bottom_row = top_row + Selection.Rows.Count - 1
+  Dim left_col As Long: left_col = Selection.Column
+  Dim right_col As Long: right_col = Selection.Columns.Count + left_col - 1
+  Dim cur_range As Range: Set cur_range = Selection
+  Dim end_range As Range
   If right_col < 116384 Then
-    Dim end_range as Range: Set end_range = Cells(top_row, right_col + 1)
+    Set end_range = Cells(top_row, right_col + 1)
+    Range(cur_range, end_range).Select
+  Else
+    Set end_range = Cells(top_row, ) 'TODO
     Range(cur_range, end_range).Select
   End If
 End Sub
