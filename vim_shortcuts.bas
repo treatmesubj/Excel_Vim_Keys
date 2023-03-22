@@ -33,6 +33,7 @@ Sub setup_shortcuts()
 
   Application.OnKey "v", "setup_v_mode_shortcuts" 
 
+  Application.OnKey "P", "paste_values"
   Application.OnKey "p", "paste_values"
 
   Application.OnKey "/", "do_search"

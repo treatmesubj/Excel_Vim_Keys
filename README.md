@@ -1,14 +1,70 @@
-## Set Up
-- [Setting Up an Excel Add-In](https://trumpexcel.com/excel-add-in/)
+## DIY Setup
+1. If Excel Developer tab isn't enabled yet, [enable it in Excel Options](https://support.microsoft.com/en-us/office/show-the-developer-tab-e1192344-5e56-4d45-931b-e5fd9bea2d45)
+2. In a new Excel file, from Developer tab, in Visual Basic editor, create 2 modules `vim_emulation` & `vim_shortcuts` and paste in corresponding contents of sub procedures from [vim\_emulation.bas](vim_emulation.bas) & [vim\_shortcuts.bas](vim_shortcuts.bas)
+3. Save-As the Excel file as `Excel Add-in (*.xlam)`
+    - Default location is `~\AppData\Roaming\Microsoft\AddIns\<file-name>.xlam`
+4. In an Excel file, from Developer tab, in Excel Add-ins, browse for & add the Excel Add-in
+5. In Excel Options `File > Options`, in dialog box section `Quick Access Toolbar`, `Choose commands from` Macros, add `setup_shortcuts` & `teardown_shortcuts`
+    - Modify names & icons to preferrence; I use `vim_mode` with checkmark icon & `stop_vim` with cancel icon
 
-## Disable Lotus Compatibility
-`/` is mapped to `Alt` to remain compatible with ancient Lotus 123 for some reason. Disable via `File -> Options -> Advanced -> Lotus Compatibility`
+- Disable Lotus Compatibility
+    - By default in Excel, `/` is mapped to `Alt` ancient Lotus 123 compatibility; disable via `File > Options > Advanced > Lotus Compatibility` so that you can use `/` to pull up `Find and Replace`
 
-## Reference
+## Quick Setup
+1. Download [vim\_keys.xlam](vim_keys.xlam)
+2. Skip to step 4 above
+
+# Keys
+
+**Normal Mode**
+|key|action|
+|---|---|
+|`h`|move left|
+|`j`|move down|
+|`k`|move up|
+|`l`|move right|
+|`{BKSP}`|move left|
+|`{SPACE}`|move right|
+|`i`|edit cell|
+|`a`|edit cell|
+|`{SHIFT}`+`a`|edit right-most value in row|
+|`{SHIFT}`+`i`|edit left-most value in row|
+|`o`|insert row below|
+|`{SHIFT}`+`o`|insert row above|
+|`x`|delete cell|
+|`b`|move contiguous left|
+|`w`|move contiguous right|
+|`e`|move contiguous right|
+|`{SHIFT}`+`h`|move top of viewport|
+|`{CNTRL}`+`u`|move page-up|
+|`{SHIFT}`+`l`|move bottom of viewport|
+|`{CNTRL}`+`d`|move page-down|
+|`{SHIFT}`+`4`|move to right-most value in row|
+|`{SHIFT}`+`a`|move to column `A` in row|
+|`{SHIFT}`+`-`|move to left-most value in row|
+|`v`|start `visual` mode|
+|`P`|paste values|
+|`p`|paste values|
+|`/`|search|
+
+**Visual Mode**
+|key|action|
+|---|---|
+|||
+|||
+|||
+|||
+|||
+|||
+|||
+
+---
+
+## Reference Projects
 - [ExcelLikeVim](https://github.com/kjnh10/ExcelLikeVim)
 - [xlpro.tips](https://xlpro.tips/posts/excel-and-vim/)
-- [vim_ahk](https://github.com/rcmdnk/vim_ahk)
-- [vibre_office](https://github.com/seanyeh/vibreoffice)
+- [vim\_ahk](https://github.com/rcmdnk/vim_ahk)
+- [vibre\_office](https://github.com/seanyeh/vibreoffice)
 
 ## VBA API Docs
 - [Application.OnKey](https://learn.microsoft.com/en-us/office/vba/api/excel.application.onkey)
