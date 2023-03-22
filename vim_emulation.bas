@@ -15,14 +15,19 @@ Public Sub go_right()
   Application.SendKeys "{RIGHT}"
 End Sub
 ' visual up, down, left, right
-' TODO: recoil towards start-cell
 Public Sub visual_up(start_row As Long, start_col As Long)
-  Dim top_row As Long: Dim left_col As Long
-  top_row = Selection.row: left_col = Selection.Column
-  Dim cur_range as Range: Set cur_range = Selection
-  If top_row > 1 Then
-    Dim end_range as Range: Set end_range = Cells(top_row - 1, left_col)
-    Range(cur_range, end_range).Select
+  Dim start_range As Range: Set start_range = Cells(start_row, start_col)
+  Dim top_row As Long: top_row = Selection.row
+  Dim left_col As Long: left_col = Selection.Column
+  Dim bottom_row As Long: bottom_row = top_row + Selection.Rows.Count - 1
+  Dim cur_range As Range: Set cur_range = Selection
+  Dim end_range As Range
+  If top_row > 1 And top_row < start_row Then
+    Set end_range = Cells(top_row - 1, left_col)
+    Range(start_range, end_range).Select
+  Else
+    Set end_range = Cells(bottom_row - 1, left_col)
+    Range(start_range, end_range).Select
   End If
 End Sub
 Public Sub visual_down(start_row As Long, start_col As Long)
