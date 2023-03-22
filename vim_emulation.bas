@@ -199,7 +199,7 @@ Public Sub delete_row()
   Cells(row, Selection.Column).Select
   Application.SendKeys "{F2}"
 End Sub
-Public Sub delete_cell()
+Public Sub delete_selected()
   Application.SendKeys "{DEL}"
 End Sub
 

@@ -16,8 +16,7 @@ Sub setup_shortcuts()
   Application.OnKey "+o", "insert_row_above"
 
   'Application.OnKey "dd", "delete_row"
-  'Application.OnKey "dw", "delete_cell"
-  Application.OnKey "x", "delete_cell"
+  Application.OnKey "x", "delete_selected"
 
   Application.OnKey "b", "go_contiguous_left"
   Application.OnKey "w", "go_contiguous_right"
@@ -57,6 +56,7 @@ Sub setup_v_mode_shortcuts()
   'Application.OnKey "0", "visual_begin_of_row"
   'Application.OnKey "+-", "visual_begin_of_row_values" '_
 
+  Application.OnKey "x", "delete_selected"
   Application.OnKey "y", "copy_selected"
 
   Application.OnKey "v", "teardown_v_mode_shortcuts"
