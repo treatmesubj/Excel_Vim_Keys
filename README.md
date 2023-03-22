@@ -1,3 +1,6 @@
+# Excel Vim Keys
+Too cool to use Excel, too amateur to escape it 
+
 ## DIY Setup
 1. If Excel Developer tab isn't enabled yet, [enable it in Excel Options](https://support.microsoft.com/en-us/office/show-the-developer-tab-e1192344-5e56-4d45-931b-e5fd9bea2d45)
 2. In a new Excel file, from Developer tab, in Visual Basic editor, create 2 modules `vim_emulation` & `vim_shortcuts` and paste in corresponding contents of sub procedures from [vim\_emulation.bas](vim_emulation.bas) & [vim\_shortcuts.bas](vim_shortcuts.bas)
