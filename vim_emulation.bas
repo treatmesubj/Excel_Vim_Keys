@@ -109,14 +109,24 @@ Application.ScreenUpdating = False
   End If
 Application.ScreenUpdating = True
 End Sub
-' TODO fix screen update problem?
 Public Sub go_end_of_row_values()
 Application.ScreenUpdating = False
   Dim row As Long: Dim col As Long
   row = Selection.row
   Cells(row, 16384).Select
   col = Selection.End(xlToLeft).Column
-  Cells(row, col).Select
+  Cells(row, col).Select ' idk why Excel doesn't scroll. I have to below
+  Dim vis_left As Long: Dim vis_width As Long: Dim vis_right As Long
+  vis_left = ActiveWindow.VisibleRange.Column
+  vis_width = ActiveWindow.VisibleRange.Columns.Count - 1
+  vis_right = vis_left + vis_width
+  If Not (vis_left < col And col < vis_right) Then
+    If col > vis_width Then
+      ActiveWindow.ScrollColumn = col - vis_width + 2
+    Else
+      ActiveWindow.ScrollColumn = col
+    End If
+  End If
 Application.ScreenUpdating = True
 End Sub
 Public Sub go_bottom_of_viewport()
