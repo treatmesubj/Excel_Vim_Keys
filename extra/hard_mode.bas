@@ -113,3 +113,40 @@ Application.OnKey "k", "simple_visual_up"
 Application.OnKey "l", "'visual_right """ & start_row & """, " & start_col & " '"
 Application.OnKey " ", "'visual_right """ & start_row & """, " & start_col & " '"
 
+' contiguous left, right
+Public Sub go_contiguous_left()
+Application.ScreenUpdating = False
+  Dim row As Long: Dim col As Long
+  row = Selection.row: col = Selection.End(xlToLeft).Column ' this row, next contig cell to left
+  Cells(row, col).Select: col = Selection.Column
+  If (IsEmpty(Selection) Or col = 1) And row > 1 Then ' if nothing
+    Cells(row - 1, 16384).Select ' go up row to right edge
+    If IsEmpty(Selection) Then ' next contig cell to left
+      row = Selection.row: col = Selection.End(xlToLeft).Column
+      Cells(row, col).Select
+    End If
+  End If
+Application.ScreenUpdating = True
+End Sub
+Public Sub go_contiguous_right()
+Application.ScreenUpdating = False
+  Dim row As Long: Dim col As Long
+  row = Selection.row: col = Selection.End(xlToRight).Column ' this row, next contig cell to right
+  Cells(row, col).Select: col = Selection.Column
+  If (IsEmpty(Selection) Or col = 16384) Then ' if nothing
+    Cells(row+1, 1).Select ' go down row to left edge
+    If IsEmpty(Selection) Then ' next contig cell to right
+      row = Selection.row: col = Selection.End(xlToRight).Column
+      Cells(row, col).Select
+      If IsEmpty(Selection) Then ' if row empty, stay at left edge
+        Cells(row, 1).Select
+      End If
+    End If
+  End If
+Application.ScreenUpdating = True
+End Sub
+
+Application.OnKey "b", "go_contiguous_left"
+Application.OnKey "w", "go_contiguous_right"
+Application.OnKey "e", "go_contiguous_right"
+

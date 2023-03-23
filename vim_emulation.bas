@@ -28,7 +28,6 @@ Public Sub visual_right()
   Application.SendKeys "+{RIGHT}"
 End Sub
 
-
 ' editing
 Public Sub edit()
   Application.SendKeys "{F2}"
@@ -53,35 +52,16 @@ End Sub
 
 ' contiguous left, right
 Public Sub go_contiguous_left()
-Application.ScreenUpdating = False
-  Dim row As Long: Dim col As Long
-  row = Selection.row: col = Selection.End(xlToLeft).Column ' this row, next contig cell to left
-  Cells(row, col).Select: col = Selection.Column
-  If (IsEmpty(Selection) Or col = 1) And row > 1 Then ' if nothing
-    Cells(row - 1, 16384).Select ' go up row to right edge
-    If IsEmpty(Selection) Then ' next contig cell to left
-      row = Selection.row: col = Selection.End(xlToLeft).Column
-      Cells(row, col).Select
-    End If
-  End If
-Application.ScreenUpdating = True
+  Application.SendKeys "^{LEFT}"
 End Sub
 Public Sub go_contiguous_right()
-Application.ScreenUpdating = False
-  Dim row As Long: Dim col As Long
-  row = Selection.row: col = Selection.End(xlToRight).Column ' this row, next contig cell to right
-  Cells(row, col).Select: col = Selection.Column
-  If (IsEmpty(Selection) Or col = 16384) Then ' if nothing
-    Cells(row+1, 1).Select ' go down row to left edge
-    If IsEmpty(Selection) Then ' next contig cell to right
-      row = Selection.row: col = Selection.End(xlToRight).Column
-      Cells(row, col).Select
-      If IsEmpty(Selection) Then ' if row empty, stay at left edge
-        Cells(row, 1).Select
-      End If
-    End If
-  End If
-Application.ScreenUpdating = True
+  Application.SendKeys "^{RIGHT}"
+End Sub
+Public Sub visual_contiguous_left()
+  Application.SendKeys "^+{LEFT}"
+End Sub
+Public Sub visual_contiguous_right()
+  Application.SendKeys "^+{RIGHT}"
 End Sub
 
 ' insert rows 
