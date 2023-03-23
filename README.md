@@ -34,6 +34,7 @@ Too cool to use Excel, too amateur to escape it
 |`o`|insert row below|
 |`{SHIFT}`+`o`|insert row above|
 |`x`|delete|
+|`d`|cut|
 |`b`|move contiguous left|
 |`w`|move contiguous right|
 |`e`|move contiguous right|

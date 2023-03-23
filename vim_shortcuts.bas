@@ -17,6 +17,7 @@ Sub setup_shortcuts()
 
   'Application.OnKey "dd", "delete_row"
   Application.OnKey "x", "delete_selected"
+  Application.OnKey "d", "cut_selected"
 
   Application.OnKey "b", "go_contiguous_left"
   Application.OnKey "w", "go_contiguous_right"
