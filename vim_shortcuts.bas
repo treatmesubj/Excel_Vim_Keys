@@ -46,12 +46,12 @@ Sub setup_v_mode_shortcuts()
   Dim start_row As Long: Dim start_col As Long
   start_row = Selection.Row: start_col = Selection.Column
 
-  Application.OnKey "h", "'visual_left """ & start_row & """, " & start_col & " '"
-  Application.OnKey "{BS}", "'visual_left """ & start_row & """, " & start_col & " '"
-  Application.OnKey "j", "'visual_down """ & start_row & """, " & start_col & " '"
-  Application.OnKey "k", "'visual_up """ & start_row & """, " & start_col & " '"
-  Application.OnKey "l", "'visual_right """ & start_row & """, " & start_col & " '"
-  Application.OnKey " ", "'visual_right """ & start_row & """, " & start_col & " '"
+  Application.OnKey "h", "visual_left"
+  Application.OnKey "{BS}", "visual_left"
+  Application.OnKey "j", "visual_down"
+  Application.OnKey "k", "visual_up"
+  Application.OnKey "l", "visual_right"
+  Application.OnKey " ", "visual_right"
 
   'Application.OnKey "b", "visual_contiguous_left"
   'Application.OnKey "w", "visual_contiguous_right"
