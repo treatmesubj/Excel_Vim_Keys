@@ -1,7 +1,7 @@
 # Excel Vim Keys
 Too cool to use Excel, too amateur to escape it\
 Excel shortcuts can be used in conjunction w/ Vim keys\
-Nearly all of Excel `{CNTRL}` & `{SHIFT}` shortcuts are unaffected\
+Nearly all of Excel `{CNTRL}` & `{SHIFT}` shortcuts are unaffected (excl. underline & auto-fill-right)\
 All Excel `{ALT}` shortcuts are unaffected
 
 ## DIY Setup
