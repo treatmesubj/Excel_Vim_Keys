@@ -42,7 +42,7 @@ Too cool to use Excel, too amateur to escape it
 |`{SHIFT}`+`l`|move bottom of viewport|
 |`{CNTRL}`+`d`|move page-down|
 |`{SHIFT}`+`4`|move to right-most value in row|
-|`{SHIFT}`+`a`|move to column `A` in row|
+|`0`|move to column `A` in row|
 |`{SHIFT}`+`-`|move to left-most value in row|
 |`v`|start `visual` mode|
 |`p`|paste|
