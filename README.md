@@ -60,6 +60,9 @@ Too cool to use Excel, too amateur to escape it
 |`l`|move right|
 |`{BKSP}`|move left|
 |`{SPACE}`|move right|
+|`b`|move contiguous left|
+|`w`|move contiguous right|
+|`e`|move contiguous right|
 |`x`|delete|
 |`d`|cut|
 |`y`|copy|
