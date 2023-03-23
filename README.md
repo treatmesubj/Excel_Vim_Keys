@@ -1,5 +1,5 @@
 # Excel Vim Keys
-Too cool to use Excel, too amateur to escape it\ 
+Too cool to use Excel, too amateur to escape it\
 Excel shortcuts can be used in conjunction w/ Vim keys\
 Nearly all of Excel `{CNTRL}` & `{SHIFT}` shortcuts are unaffected\
 All Excel `{ALT}` shortcuts are unaffected
