@@ -7,7 +7,6 @@ Option Explicit
 #End If
 Private Const VK_CONTROL = &H11
 Private Const VK_SHIFT = &H10
-Private Const VK_MENU = &H12
 
 Sub keycheck()
 'Ctrl
