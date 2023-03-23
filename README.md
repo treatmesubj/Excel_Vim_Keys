@@ -68,6 +68,8 @@ Too cool to use Excel, too amateur to escape it
 |`y`|copy|
 |`p`|paste|
 |`P`|paste values|
+|`{CNTRL}`+`u`|move page-up|
+|`{CNTRL}`+`d`|move page-down|
 |`v`|exit visual mode to normal mode|
 |`{ESC}`|exit visual mode to normal mode|
 

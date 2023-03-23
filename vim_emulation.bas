@@ -131,12 +131,22 @@ Application.ScreenUpdating = False
   Cells(new_view_row - 1, Selection.Column).Select
 Application.ScreenUpdating = True
 End Sub
+
+' page up, down
 Public Sub page_up()
   Application.SendKeys "{PGUP}"
 End Sub
 Public Sub page_down()
   Application.SendKeys "{PGDN}"
 End Sub
+' visual page up, down
+Public Sub visual_page_up()
+  Application.SendKeys "+{PGUP}"
+End Sub
+Public Sub visual_page_down()
+  Application.SendKeys "+{PGDN}"
+End Sub
+
 
 ' search
 Public Sub do_search()
@@ -169,7 +179,6 @@ Public Sub paste()
   End If
   Call teardown_v_mode_shortcuts
 End Sub
-
 
 ' undo & redo
 Public Sub undo()
