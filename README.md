@@ -4,6 +4,10 @@ Excel shortcuts can be used in conjunction w/ Vim keys\
 Nearly all of Excel `{CNTRL}` & `{SHIFT}` shortcuts are unaffected (excl. underline & auto-fill-right)\
 All Excel `{ALT}` shortcuts are unaffected
 
+## Quick Setup
+1. Download [vim\_keys.xlam](vim_keys.xlam)
+2. Skip to step 4 below in DIY Setup
+
 ## DIY Setup
 1. If Excel Developer tab isn't enabled yet, [enable it in Excel Options](https://support.microsoft.com/en-us/office/show-the-developer-tab-e1192344-5e56-4d45-931b-e5fd9bea2d45)
 2. In a new Excel file, from Developer tab, in Visual Basic editor, create 2 modules `vim_emulation` & `vim_shortcuts` and paste in corresponding contents of sub procedures from [vim\_emulation.bas](vim_emulation.bas) & [vim\_shortcuts.bas](vim_shortcuts.bas)
@@ -15,10 +19,6 @@ All Excel `{ALT}` shortcuts are unaffected
 
 - Disable Lotus Compatibility
     - By default in Excel, `/` is mapped to `Alt` ancient Lotus 123 compatibility; disable via `File > Options > Advanced > Lotus Compatibility` so that you can use `/` to pull up `Find and Replace`
-
-## Quick Setup
-1. Download [vim\_keys.xlam](vim_keys.xlam)
-2. Skip to step 4 above
 
 # Keys
 ### Normal Mode
