@@ -33,8 +33,7 @@ Public Sub edit()
   Application.SendKeys "{F2}"
 End Sub
 Public Sub edit_begin()
-  Call go_begin_of_row
-  Call go_contiguous_right
+  Call go_begin_of_row_values
   Call edit
   Application.SendKeys "{HOME}"
 End Sub
@@ -104,14 +103,13 @@ End Sub
 Public Sub go_begin_of_row_values()
 Application.ScreenUpdating = False 
   Call go_begin_of_row
-  Dim row As Long: Dim col As Long
-  row = Selection.row: col = Selection.End(xlToRight).Column
-  Cells(row, col).Select
+  Call go_contiguous_right
   If IsEmpty(Selection) Then
-    Cells(row, 1).Select
+    Cells(Selection.row, 1).Select
   End If
 Application.ScreenUpdating = True
 End Sub
+' TODO fix screen update problem?
 Public Sub go_end_of_row_values()
 Application.ScreenUpdating = False
   Dim row As Long: Dim col As Long
@@ -133,11 +131,25 @@ Application.ScreenUpdating = True
 End Sub
 
 ' page up, down
+' cannot use simple Application.SendKeys "+{PGUP}"
+' because you annoyingly have to keep un/pressing <CONTROL> key
 Public Sub page_up()
-  Application.SendKeys "{PGUP}"
+Application.ScreenUpdating = False
+  Dim row As Long: Dim col As Long: Dim rows_down As Long
+  row = Selection.row: col = Selection.Column
+  rows_down = row - ActiveWindow.ScrollRow
+  ActiveWindow.LargeScroll Down:=-1
+  Cells(ActiveWindow.ScrollRow + rows_down, col).Select
+Application.ScreenUpdating = True
 End Sub
 Public Sub page_down()
-  Application.SendKeys "{PGDN}"
+Application.ScreenUpdating = False
+  Dim row As Long: Dim col As Long: Dim rows_down As Long
+  row = Selection.row: col = Selection.Column
+  rows_down = row - ActiveWindow.ScrollRow
+  ActiveWindow.LargeScroll Down:=1
+  Cells(ActiveWindow.ScrollRow + rows_down, col).Select
+Application.ScreenUpdating = True
 End Sub
 ' visual page up, down
 Public Sub visual_page_up()
