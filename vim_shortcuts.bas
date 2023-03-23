@@ -98,7 +98,6 @@ Sub teardown_shortcuts()
   Application.OnKey "+o"
 
   'Application.OnKey "dd"
-  'Application.OnKey "dw"
   Application.OnKey "x"
   Application.OnKey "d"
 
