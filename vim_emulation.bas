@@ -141,7 +141,7 @@ Application.ScreenUpdating = True
 End Sub
 
 ' page up, down
-' cannot use simple Application.SendKeys "+{PGUP}"
+' cannot use simple Application.SendKeys "{PGUP}"
 ' because you annoyingly have to keep un/pressing <CONTROL> key
 Public Sub page_up()
 Application.ScreenUpdating = False
@@ -162,13 +162,13 @@ Application.ScreenUpdating = False
 Application.ScreenUpdating = True
 End Sub
 ' visual page up, down
+' will settle for annoying "+{PGUP}" for now
 Public Sub visual_page_up()
   Application.SendKeys "+{PGUP}"
 End Sub
 Public Sub visual_page_down()
   Application.SendKeys "+{PGDN}"
 End Sub
-
 
 ' search
 Public Sub do_search()
