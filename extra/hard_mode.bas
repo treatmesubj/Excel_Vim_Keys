@@ -1,3 +1,16 @@
+Sub setup_v_mode_shortcuts()
+  Call teardown_shortcuts
+  Dim start_row As Long: Dim start_col As Long
+  start_row = Selection.Row: start_col = Selection.Column
+  Application.OnKey "h", "'visual_left """ & start_row & """, " & start_col & " '"
+  Application.OnKey "{BS}", "'visual_left """ & start_row & """, " & start_col & " '"
+  Application.OnKey "j", "'visual_down """ & start_row & """, " & start_col & " '"
+  Application.OnKey "k", "simple_visual_up"
+  Application.OnKey "l", "'visual_right """ & start_row & """, " & start_col & " '"
+  Application.OnKey " ", "'visual_right """ & start_row & """, " & start_col & " '"
+  ' etc. 
+End Sub
+
 ' visual up
 Public Sub visual_up(start_row As Long, start_col As Long)
   Dim start_range As Range: Set start_range = Cells(start_row, start_col)
@@ -106,12 +119,6 @@ Public Sub visual_right(start_row As Long, start_col As Long)
   End If
 End Sub
 
-Application.OnKey "h", "'visual_left """ & start_row & """, " & start_col & " '"
-Application.OnKey "{BS}", "'visual_left """ & start_row & """, " & start_col & " '"
-Application.OnKey "j", "'visual_down """ & start_row & """, " & start_col & " '"
-Application.OnKey "k", "simple_visual_up"
-Application.OnKey "l", "'visual_right """ & start_row & """, " & start_col & " '"
-Application.OnKey " ", "'visual_right """ & start_row & """, " & start_col & " '"
 
 ' contiguous left, right
 Public Sub go_contiguous_left()
