@@ -4,7 +4,7 @@ Too cool to use Excel, too amateur to escape it\
 
 Excel shortcuts can be used in conjunction w/ Vim keys\
 Nearly all of Excel `{CNTRL}` & `{SHIFT}` shortcuts are unaffected (excl. underline & auto-fill-right)\
-All Excel `{ALT}` shortcuts are unaffected
+Excel `{ALT}` shortcuts are unaffected
 
 Movements to leftmost & rightmost populated cells in a row is most enjoyable advantage
 
