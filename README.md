@@ -70,6 +70,7 @@ All Excel `{ALT}` shortcuts are unaffected
 |`w`|move contiguous right|
 |`e`|move contiguous right|
 |`{SHIFT}`+`4`|move to right-most value in row|
+|`0`|move to column `A` in row|
 |`x`|delete|
 |`d`|cut|
 |`y`|copy|
