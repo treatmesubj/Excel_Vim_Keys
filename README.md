@@ -69,6 +69,7 @@ All Excel `{ALT}` shortcuts are unaffected
 |`b`|move contiguous left|
 |`w`|move contiguous right|
 |`e`|move contiguous right|
+|`{SHIFT}`+`4`|move to right-most value in row|
 |`x`|delete|
 |`d`|cut|
 |`y`|copy|

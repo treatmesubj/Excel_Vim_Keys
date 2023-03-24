@@ -96,10 +96,12 @@ Public Sub go_top_of_viewport()
   Dim w As Window: Set w = ActiveWindow
   Cells(w.ScrollRow, Selection.Column).Select
 End Sub
+
 Public Sub go_begin_of_row()
   Dim row As Long: row = Selection.row
   Cells(row, 1).Select
 End Sub
+
 Public Sub go_begin_of_row_values()
 Application.ScreenUpdating = False 
   Call go_begin_of_row
@@ -109,6 +111,7 @@ Application.ScreenUpdating = False
   End If
 Application.ScreenUpdating = True
 End Sub
+
 Public Sub go_end_of_row_values()
 Application.ScreenUpdating = False
   Dim row As Long: Dim col As Long
@@ -129,6 +132,37 @@ Application.ScreenUpdating = False
   End If
 Application.ScreenUpdating = True
 End Sub
+
+Public Sub visual_end_of_row_values(start_row As Long, start_col As Long)
+  Dim start_range As Range: Set start_range = Cells(start_row, start_col)
+  Dim top_row As Long: top_row = Selection.row
+  Dim bottom_row As Long: bottom_row = top_row + Selection.Rows.Count - 1
+  Dim end_row As Long: Dim end_col As Long: Dim end_range As Range
+  Cells(start_row, 16384).Select
+  end_col = Selection.End(xlToLeft).Column
+  If top_row < start_row Then
+    Set end_range = Cells(top_row, end_col) 
+  Else
+    Set end_range = Cells(bottom_row, end_col)
+  End If
+  Range(start_range, end_range).Select
+  ' need to pivot anchor back to start
+  Dim left_col As Long: left_col = Selection.Column
+  Dim right_col As Long: right_col = Selection.Columns.Count + left_col - 1
+  If top_row < start_row Then
+    Application.SendKeys "^."
+    If right_col > start_col Then
+      Application.SendKeys "^."
+    End If
+    If left_col = start_col And left_col <> right_col Then
+      Application.SendKeys "^."
+    End If
+  End If
+  If left_col < start_col Then
+    Application.SendKeys "^."
+  End If
+End Sub
+
 Public Sub go_bottom_of_viewport()
 Application.ScreenUpdating = False
   Dim new_view_row As Long, old_view_row As Long
