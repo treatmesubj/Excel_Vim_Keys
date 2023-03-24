@@ -91,6 +91,23 @@ Public Sub delete_selected()
   Application.SendKeys "{DEL}"
 End Sub
 
+' pivot anchor
+Public Sub pivot_anchor(start_row As Long, start_col As Long, left_col As Long, right_col As Long, top_row As Long, bottom_row As Long)
+  If top_row < start_row Then
+    Application.SendKeys "^."
+    If right_col > start_col Then
+      Application.SendKeys "^."
+    End If
+    If left_col = start_col And left_col <> right_col Then
+      Application.SendKeys "^."
+    End If
+  End If
+  If left_col < start_col Then
+    Application.SendKeys "^."
+  End If
+End Sub
+
+
 '
 ' big movements
 '
@@ -117,21 +134,9 @@ Application.ScreenUpdating = False
     Set end_range = Cells(bottom_row, end_col)
   End If
   Range(start_range, end_range).Select
-  ' need to pivot anchor back to start
   Dim left_col As Long: left_col = Selection.Column
   Dim right_col As Long: right_col = Selection.Columns.Count + left_col - 1
-  If top_row < start_row Then
-    Application.SendKeys "^."
-    If right_col > start_col Then
-      Application.SendKeys "^."
-    End If
-    If left_col = start_col And left_col <> right_col Then
-      Application.SendKeys "^."
-    End If
-  End If
-  If left_col < start_col Then
-    Application.SendKeys "^."
-  End If
+  Call pivot_anchor(start_row, start_col, left_col, right_col, top_row, bottom_row)
 Application.ScreenUpdating = True
 End Sub
 
@@ -165,22 +170,9 @@ Application.ScreenUpdating = False
     Set end_range = Cells(bottom_row, end_col)
   End If
   Range(start_range, end_range).Select
-  ' need to pivot anchor back to start
   Dim left_col As Long: left_col = Selection.Column
   Dim right_col As Long: right_col = Selection.Columns.Count + left_col - 1
-  If top_row < start_row Then
-    Application.SendKeys "^."
-    If right_col > start_col Then
-      Application.SendKeys "^."
-    End If
-    If left_col = start_col And left_col <> right_col Then
-      Application.SendKeys "^."
-    End If
-  End If
-  If left_col < start_col Then
-    Application.SendKeys "^."
-  End If
-  
+  Call pivot_anchor(start_row, start_col, left_col, right_col, top_row, bottom_row)
 Application.ScreenUpdating = True
 End Sub
 
@@ -219,21 +211,9 @@ Application.ScreenUpdating = False
     Set end_range = Cells(bottom_row, end_col)
   End If
   Range(start_range, end_range).Select
-  ' need to pivot anchor back to start
   Dim left_col As Long: left_col = Selection.Column
   Dim right_col As Long: right_col = Selection.Columns.Count + left_col - 1
-  If top_row < start_row Then
-    Application.SendKeys "^."
-    If right_col > start_col Then
-      Application.SendKeys "^."
-    End If
-    If left_col = start_col And left_col <> right_col Then
-      Application.SendKeys "^."
-    End If
-  End If
-  If left_col < start_col Then
-    Application.SendKeys "^."
-  End If
+  Call pivot_anchor(start_row, start_col, left_col, right_col, top_row, bottom_row)
 Application.ScreenUpdating = True
 End Sub
 
