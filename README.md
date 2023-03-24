@@ -6,6 +6,8 @@ Excel shortcuts can be used in conjunction w/ Vim keys\
 Nearly all of Excel `{CNTRL}` & `{SHIFT}` shortcuts are unaffected (excl. underline & auto-fill-right)\
 All Excel `{ALT}` shortcuts are unaffected
 
+Movements to leftmost & rightmost populated cells in a row is most enjoyable advantage
+
 ## Quick Setup
 1. Download [vim\_keys.xlam](vim_keys.xlam)
 2. Skip to step 4 below in DIY Setup
@@ -34,8 +36,8 @@ All Excel `{ALT}` shortcuts are unaffected
 |`{SPACE}`|move right|
 |`i`|edit cell|
 |`a`|edit cell|
-|`{SHIFT}`+`a`|edit right-most value in row|
-|`{SHIFT}`+`i`|edit left-most value in row|
+|`{SHIFT}`+`a`|edit rightmost value in row|
+|`{SHIFT}`+`i`|edit leftmost value in row|
 |`o`|insert row below|
 |`{SHIFT}`+`o`|insert row above|
 |`x`|delete|
@@ -47,9 +49,9 @@ All Excel `{ALT}` shortcuts are unaffected
 |`{CNTRL}`+`u`|move page-up|
 |`{SHIFT}`+`l`|move bottom of viewport|
 |`{CNTRL}`+`d`|move page-down|
-|`{SHIFT}`+`4`|move to right-most value in row|
+|`{SHIFT}`+`4`|move to rightmost value in row|
 |`0`|move to column `A` in row|
-|`{SHIFT}`+`-`|move to left-most value in row|
+|`{SHIFT}`+`-`|move to leftmost value in row|
 |`v`|start `visual` mode|
 |`p`|paste|
 |`P`|paste values|
@@ -69,9 +71,9 @@ All Excel `{ALT}` shortcuts are unaffected
 |`b`|move contiguous left|
 |`w`|move contiguous right|
 |`e`|move contiguous right|
-|`{SHIFT}`+`4`|move to right-most value in row|
+|`{SHIFT}`+`4`|move to rightmost value in row|
 |`0`|move to column `A` in row|
-|`{SHIFT}`+`-`|move to left-most value in row|
+|`{SHIFT}`+`-`|move to leftmost value in row|
 |`x`|delete|
 |`d`|cut|
 |`y`|copy|
