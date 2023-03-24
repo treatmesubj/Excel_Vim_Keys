@@ -110,8 +110,7 @@ Application.ScreenUpdating = False
   Dim top_row As Long: top_row = Selection.row
   Dim bottom_row As Long: bottom_row = top_row + Selection.Rows.Count - 1
   Dim end_row As Long: Dim end_col As Long: Dim end_range As Range
-  Cells(start_row, 1).Select
-  end_col = Selection.End(xlToLeft).Column
+  end_col = 1
   If top_row < start_row Then
     Set end_range = Cells(top_row, end_col) 
   Else
@@ -143,6 +142,45 @@ Application.ScreenUpdating = False
   If IsEmpty(Selection) Then
     Cells(Selection.row, 1).Select
   End If
+Application.ScreenUpdating = True
+End Sub
+
+Public Sub visual_begin_of_row_values(start_row As Long, start_col As Long)
+Application.ScreenUpdating = False
+  Dim start_range As Range: Set start_range = Cells(start_row, start_col)
+  Dim top_row As Long: top_row = Selection.row
+  Dim bottom_row As Long: bottom_row = top_row + Selection.Rows.Count - 1
+  Dim end_row As Long: Dim end_col As Long: Dim end_range As Range
+  Cells(start_row, 1).Select
+  Dim sel_right_col As Long
+  sel_right_col = Selection.End(xlToRight).Column
+  Cells(start_row, sel_right_col).Select
+  If IsEmpty(Selection) Then
+    Cells(Selection.row, 1).Select
+  End If
+  end_col = Selection.Column 
+  If top_row < start_row Then
+    Set end_range = Cells(top_row, end_col) 
+  Else
+    Set end_range = Cells(bottom_row, end_col)
+  End If
+  Range(start_range, end_range).Select
+  ' need to pivot anchor back to start
+  Dim left_col As Long: left_col = Selection.Column
+  Dim right_col As Long: right_col = Selection.Columns.Count + left_col - 1
+  If top_row < start_row Then
+    Application.SendKeys "^."
+    If right_col > start_col Then
+      Application.SendKeys "^."
+    End If
+    If left_col = start_col And left_col <> right_col Then
+      Application.SendKeys "^."
+    End If
+  End If
+  If left_col < start_col Then
+    Application.SendKeys "^."
+  End If
+  
 Application.ScreenUpdating = True
 End Sub
 

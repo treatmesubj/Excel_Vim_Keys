@@ -62,7 +62,7 @@ Sub setup_v_mode_shortcuts()
   Application.OnKey "^d", "visual_page_down"
   Application.OnKey "+4", "'visual_end_of_row_values """ & start_row & """, " & start_col & " '" 
   Application.OnKey "0", "'visual_begin_of_row """ & start_row & """, " & start_col & " '"
-  'Application.OnKey "+-", "visual_begin_of_row_values" '_
+  Application.OnKey "+-", "'visual_begin_of_row_values """ & start_row & """, " & start_col & " '"
 
   Application.OnKey "x", "delete_selected"
   Application.OnKey "d", "cut_selected"
