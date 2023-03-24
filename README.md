@@ -22,7 +22,7 @@ Movements to leftmost & rightmost populated cells in a row is most enjoyable adv
     - Modify names & icons to preferrence; I use `vim_mode` with checkmark icon & `stop_vim` with cancel icon
 
 - Disable Lotus Compatibility
-    - By default in Excel, `/` is mapped to `Alt` ancient Lotus 123 compatibility; disable via `File > Options > Advanced > Lotus Compatibility` so that you can use `/` to pull up `Find and Replace`
+    - By default in Excel, `/` is mapped to `Alt` for ancient Lotus 123 compatibility; disable via `File > Options > Advanced > Lotus Compatibility` so that you can use `/` to pull up `Find and Replace`
 
 # Keys
 ### Normal Mode
