@@ -143,9 +143,11 @@ End Sub
 Public Sub go_begin_of_row_values()
 Application.ScreenUpdating = False
   Call go_begin_of_row
-  Call go_contiguous_right
   If IsEmpty(Selection) Then
-    Cells(Selection.row, 1).Select
+    Call go_contiguous_right
+    If IsEmpty(Selection) Then
+      Cells(Selection.row, 1).Select
+    End If
   End If
 Application.ScreenUpdating = True
 End Sub
@@ -157,11 +159,13 @@ Application.ScreenUpdating = False
   Dim bottom_row As Long: bottom_row = top_row + Selection.Rows.Count - 1
   Dim end_row As Long: Dim end_col As Long: Dim end_range As Range
   Cells(start_row, 1).Select
-  Dim sel_right_col As Long
-  sel_right_col = Selection.End(xlToRight).Column
-  Cells(start_row, sel_right_col).Select
   If IsEmpty(Selection) Then
-    Cells(Selection.row, 1).Select
+    Dim sel_right_col As Long
+    sel_right_col = Selection.End(xlToRight).Column
+    Cells(start_row, sel_right_col).Select
+    If IsEmpty(Selection) Then
+      Cells(Selection.row, 1).Select
+    End If
   End If
   end_col = Selection.Column 
   If top_row < start_row Then
