@@ -142,7 +142,7 @@ End Sub
 
 Public Sub go_begin_of_row_values()
 Application.ScreenUpdating = False
-  Call go_begin_of_row
+  Cells(Selection.Row, 1).Select 
   If IsEmpty(Selection) Then
     Call go_contiguous_right
     If IsEmpty(Selection) Then
@@ -150,6 +150,7 @@ Application.ScreenUpdating = False
     End If
   End If
 Application.ScreenUpdating = True
+Selection.Select ' screen update weirdness
 End Sub
 
 Public Sub visual_begin_of_row_values(start_row As Long, start_col As Long)
