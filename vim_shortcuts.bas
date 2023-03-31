@@ -41,8 +41,24 @@ Sub setup_shortcuts()
   Application.OnKey "u", "undo"
   Application.OnKey "^r", "redo"
 
-  Application.OnKey "/", "do_search"
+  Application.OnKey "/", "find_string"
+  Application.OnKey "n", "find_next"
+  Application.OnKey "+n", "find_prev"
 End Sub
+
+'Sub setup_i_mode_shortcuts()
+'  Call teardown_shortcuts()
+'  Application.OnKey "~", "enter_for_edit"
+'  Application.OnKey "{TAB}", "tab_for_edit"
+'  Application.OnKey "{ESC}", "esc_for_edit"
+'End Sub
+'
+'Sub teardown_i_mode_shortcuts()
+'  Application.OnKey "~"  'ENTER
+'  Application.OnKey "{TAB}"
+'  Application.OnKey "{ESC}"
+'  Call setup_shortcuts
+'End Sub
 
 Sub setup_v_mode_shortcuts()
   Call teardown_shortcuts
@@ -124,6 +140,8 @@ Sub teardown_shortcuts()
   Application.OnKey "^r"
 
   Application.OnKey "/"
+  Application.OnKey "n"
+  Application.OnKey "+n"
 
   Application.OnKey "y"
   Application.OnKey "{ESC}"

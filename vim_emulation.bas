@@ -268,11 +268,6 @@ Public Sub visual_page_down()
   Application.SendKeys "+{PGDN}"
 End Sub
 
-' search
-Public Sub do_search()
-  Application.SendKeys "^f"
-End Sub
-
 ' copy
 Public Sub copy_selected()
   Selection.Copy
@@ -307,3 +302,32 @@ End Sub
 Public Sub redo()
   Application.SendKeys "^y"
 End Sub
+
+' searching
+Sub find_string()
+  Dim obj As Object: Dim search_str As String
+  search_str = InputBox("/", "search string", "")
+  If search_str = "" Then
+    Exit Sub
+  End If
+  Set obj = ActiveSheet.cells.find(what:=search_str, lookat:=xlPart)
+  If Not obj Is Nothing Then
+    obj.Activate
+  Else
+    MsgBox "not found"
+  End If
+End Sub
+Function find_next()
+  Dim match As Range
+  Set match = cells.findNext(After:=ActiveCell)
+  If Not match Is Nothing Then
+    match.Activate
+  End If
+End Function
+Function find_prev()
+  Dim match As Range
+  Set match = cells.findPrevious(After:=ActiveCell)
+  If Not match Is Nothing Then
+    match.Activate
+  End If
+End Function

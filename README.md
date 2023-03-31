@@ -21,9 +21,6 @@ Movements to leftmost & rightmost populated cells in a row is most enjoyable adv
 5. In Excel Options `File > Options`, in dialog box section `Quick Access Toolbar`, `Choose commands from` Macros, add `setup_shortcuts` & `teardown_shortcuts`
     - Modify names & icons to preferrence; I use `vim_mode` with checkmark icon & `stop_vim` with cancel icon
 
-- Disable Lotus Compatibility
-    - By default in Excel, `/` is mapped to `Alt` for ancient Lotus 123 compatibility; disable via `File > Options > Advanced > Lotus Compatibility` so that you can use `/` to pull up `Find and Replace`
-
 # Keys
 ### Normal Mode
 |key|action|
@@ -60,6 +57,8 @@ Movements to leftmost & rightmost populated cells in a row is most enjoyable adv
 |`u`|undo|
 |`{CNTRL}`+`r`|redo|
 |`/`|search|
+|`n`|next search result|
+|`{SHIFT}`+`n`|previous search result|
 
 ### Visual Mode
 |key|action|
