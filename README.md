@@ -42,6 +42,8 @@ Movements to leftmost & rightmost populated cells in a row is most enjoyable adv
 |`{SHIFT}`+`o`|insert row above|
 |`x`|delete|
 |`d`|cut|
+|`r`|replace cell contents|
+|`R`|replace cell contents|
 |`b`|move contiguous left|
 |`w`|move contiguous right|
 |`e`|move contiguous right|

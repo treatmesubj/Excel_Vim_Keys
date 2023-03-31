@@ -7,8 +7,8 @@ Sub setup_shortcuts()
   Application.OnKey "{BS}", "go_left"
   Application.OnKey " ", "go_right"
 
-  Application.OnKey "i", "edit"
-  Application.OnKey "a", "edit"
+  Application.OnKey "i", "edit_cell"
+  Application.OnKey "a", "edit_cell"
   Application.OnKey "+a", "edit_end"
   Application.OnKey "+i", "edit_begin"
 
@@ -18,6 +18,8 @@ Sub setup_shortcuts()
   'Application.OnKey "dd", "delete_row"
   Application.OnKey "x", "delete_selected"
   Application.OnKey "d", "cut_selected"
+  Application.OnKey "r", "overwrite_cell"
+  Application.OnKey "R", "overwrite_cell"
 
   Application.OnKey "b", "go_contiguous_left"
   Application.OnKey "w", "go_contiguous_right"
@@ -99,6 +101,8 @@ Sub teardown_shortcuts()
   'Application.OnKey "dd"
   Application.OnKey "x"
   Application.OnKey "d"
+  Application.OnKey "r"
+  Application.OnKey "R"
 
   Application.OnKey "b"
   Application.OnKey "w"

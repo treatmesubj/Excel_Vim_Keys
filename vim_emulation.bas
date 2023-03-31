@@ -29,13 +29,13 @@ Public Sub visual_right()
 End Sub
 
 ' editing
-Public Sub edit()
+Public Sub edit_cell()
   Application.SendKeys "{F2}"
 End Sub
 Public Sub edit_begin()
   Call go_begin_of_row_values
   Call go_left
-  Call edit
+  Call edit_cell
   Application.SendKeys "{HOME}"
 End Sub
 Public Sub edit_end()
@@ -46,8 +46,12 @@ Application.ScreenUpdating = False
   col = Selection.End(xlToLeft).Column
   Cells(row, col).Select
   Call go_right
-  Call edit
+  Call edit_cell
 Application.ScreenUpdating = True
+End Sub
+Public Sub overwrite_cell()
+  Call delete_selected
+  Call edit_cell
 End Sub
 
 ' contiguous left, right
