@@ -44,8 +44,8 @@ End Sub
 
 Sub setup_v_mode_shortcuts()
   Call teardown_shortcuts
-  Dim start_row As Long: Dim start_col As Long
-  start_row = Selection.Row: start_col = Selection.Column
+  Dim anchor_row As Long: Dim anchor_col As Long
+  anchor_row = Selection.Row: anchor_col = Selection.Column
 
   Application.OnKey "h", "visual_left"
   Application.OnKey "{BS}", "visual_left"
@@ -60,9 +60,9 @@ Sub setup_v_mode_shortcuts()
 
   Application.OnKey "^u", "visual_page_up"
   Application.OnKey "^d", "visual_page_down"
-  Application.OnKey "+4", "'visual_end_of_row_values """ & start_row & """, " & start_col & " '" 
-  Application.OnKey "0", "'visual_begin_of_row """ & start_row & """, " & start_col & " '"
-  Application.OnKey "+-", "'visual_begin_of_row_values """ & start_row & """, " & start_col & " '"
+  Application.OnKey "+4", "'visual_end_of_row_values """ & anchor_row & """, " & anchor_col & " '" 
+  Application.OnKey "0", "'visual_begin_of_row """ & anchor_row & """, " & anchor_col & " '"
+  Application.OnKey "+-", "'visual_begin_of_row_values """ & anchor_row & """, " & anchor_col & " '"
 
   Application.OnKey "x", "delete_selected"
   Application.OnKey "d", "cut_selected"
@@ -77,7 +77,6 @@ End Sub
 Sub teardown_v_mode_shortcuts()
   Application.OnKey "y"
   Application.OnKey "{ESC}"
-  Application.OnKey "d"
   Call setup_shortcuts
 End Sub
 

@@ -36,8 +36,8 @@ Movements to leftmost & rightmost populated cells in a row is most enjoyable adv
 |`{SPACE}`|move right|
 |`i`|edit cell|
 |`a`|edit cell|
-|`{SHIFT}`+`a`|edit rightmost value in row|
-|`{SHIFT}`+`i`|edit leftmost value in row|
+|`{SHIFT}`+`a`|edit cell right of rightmost value in row|
+|`{SHIFT}`+`i`|edit cell left of leftmost value in row|
 |`o`|insert row below|
 |`{SHIFT}`+`o`|insert row above|
 |`x`|delete|

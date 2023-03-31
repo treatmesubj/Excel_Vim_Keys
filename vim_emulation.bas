@@ -34,6 +34,7 @@ Public Sub edit()
 End Sub
 Public Sub edit_begin()
   Call go_begin_of_row_values
+  Call go_left
   Call edit
   Application.SendKeys "{HOME}"
 End Sub
@@ -44,8 +45,8 @@ Application.ScreenUpdating = False
   Cells(row, 16384).Select
   col = Selection.End(xlToLeft).Column
   Cells(row, col).Select
+  Call go_right
   Call edit
-  Application.SendKeys "{END}"
 Application.ScreenUpdating = True
 End Sub
 
@@ -91,18 +92,18 @@ Public Sub delete_selected()
   Application.SendKeys "{DEL}"
 End Sub
 
-' pivot anchor
-Public Sub pivot_anchor(start_row As Long, start_col As Long, left_col As Long, right_col As Long, top_row As Long, bottom_row As Long)
-  If top_row < start_row Then
+' auto pivot anchor back to pre-action corner
+Public Sub auto_pivot_anchor(anchor_row As Long, anchor_col As Long, left_col As Long, right_col As Long, top_row As Long, bottom_row As Long)
+  If top_row < anchor_row Then
     Application.SendKeys "^."
-    If right_col > start_col Then
+    If right_col > anchor_col Then
       Application.SendKeys "^."
     End If
-    If left_col = start_col And left_col <> right_col Then
+    If left_col = anchor_col And left_col <> right_col Then
       Application.SendKeys "^."
     End If
   End If
-  If left_col < start_col Then
+  If left_col < anchor_col Then
     Application.SendKeys "^."
   End If
 End Sub
@@ -121,22 +122,22 @@ Public Sub go_begin_of_row()
   Cells(row, 1).Select
 End Sub
 
-Public Sub visual_begin_of_row(start_row As Long, start_col As Long)
+Public Sub visual_begin_of_row(anchor_row As Long, anchor_col As Long)
 Application.ScreenUpdating = False
-  Dim start_range As Range: Set start_range = Cells(start_row, start_col)
+  Dim anchor_range As Range: Set anchor_range = Cells(anchor_row, anchor_col)
   Dim top_row As Long: top_row = Selection.row
   Dim bottom_row As Long: bottom_row = top_row + Selection.Rows.Count - 1
   Dim end_row As Long: Dim end_col As Long: Dim end_range As Range
   end_col = 1
-  If top_row < start_row Then
+  If top_row < anchor_row Then
     Set end_range = Cells(top_row, end_col) 
   Else
     Set end_range = Cells(bottom_row, end_col)
   End If
-  Range(start_range, end_range).Select
+  Range(anchor_range, end_range).Select
   Dim left_col As Long: left_col = Selection.Column
   Dim right_col As Long: right_col = Selection.Columns.Count + left_col - 1
-  Call pivot_anchor(start_row, start_col, left_col, right_col, top_row, bottom_row)
+  Call auto_pivot_anchor(anchor_row, anchor_col, left_col, right_col, top_row, bottom_row)
 Application.ScreenUpdating = True
 End Sub
 
@@ -153,31 +154,31 @@ Application.ScreenUpdating = True
 Selection.Select ' screen update weirdness
 End Sub
 
-Public Sub visual_begin_of_row_values(start_row As Long, start_col As Long)
+Public Sub visual_begin_of_row_values(anchor_row As Long, anchor_col As Long)
 Application.ScreenUpdating = False
-  Dim start_range As Range: Set start_range = Cells(start_row, start_col)
+  Dim anchor_range As Range: Set anchor_range = Cells(anchor_row, anchor_col)
   Dim top_row As Long: top_row = Selection.row
   Dim bottom_row As Long: bottom_row = top_row + Selection.Rows.Count - 1
   Dim end_row As Long: Dim end_col As Long: Dim end_range As Range
-  Cells(start_row, 1).Select
+  Cells(anchor_row, 1).Select
   If IsEmpty(Selection) Then
     Dim sel_right_col As Long
     sel_right_col = Selection.End(xlToRight).Column
-    Cells(start_row, sel_right_col).Select
+    Cells(anchor_row, sel_right_col).Select
     If IsEmpty(Selection) Then
       Cells(Selection.row, 1).Select
     End If
   End If
   end_col = Selection.Column 
-  If top_row < start_row Then
+  If top_row < anchor_row Then
     Set end_range = Cells(top_row, end_col) 
   Else
     Set end_range = Cells(bottom_row, end_col)
   End If
-  Range(start_range, end_range).Select
+  Range(anchor_range, end_range).Select
   Dim left_col As Long: left_col = Selection.Column
   Dim right_col As Long: right_col = Selection.Columns.Count + left_col - 1
-  Call pivot_anchor(start_row, start_col, left_col, right_col, top_row, bottom_row)
+  Call auto_pivot_anchor(anchor_row, anchor_col, left_col, right_col, top_row, bottom_row)
 Application.ScreenUpdating = True
 End Sub
 
@@ -202,23 +203,23 @@ Application.ScreenUpdating = False
 Application.ScreenUpdating = True
 End Sub
 
-Public Sub visual_end_of_row_values(start_row As Long, start_col As Long)
+Public Sub visual_end_of_row_values(anchor_row As Long, anchor_col As Long)
 Application.ScreenUpdating = False
-  Dim start_range As Range: Set start_range = Cells(start_row, start_col)
+  Dim anchor_range As Range: Set anchor_range = Cells(anchor_row, anchor_col)
   Dim top_row As Long: top_row = Selection.row
   Dim bottom_row As Long: bottom_row = top_row + Selection.Rows.Count - 1
   Dim end_row As Long: Dim end_col As Long: Dim end_range As Range
-  Cells(start_row, 16384).Select
+  Cells(anchor_row, 16384).Select
   end_col = Selection.End(xlToLeft).Column
-  If top_row < start_row Then
+  If top_row < anchor_row Then
     Set end_range = Cells(top_row, end_col) 
   Else
     Set end_range = Cells(bottom_row, end_col)
   End If
-  Range(start_range, end_range).Select
+  Range(anchor_range, end_range).Select
   Dim left_col As Long: left_col = Selection.Column
   Dim right_col As Long: right_col = Selection.Columns.Count + left_col - 1
-  Call pivot_anchor(start_row, start_col, left_col, right_col, top_row, bottom_row)
+  Call auto_pivot_anchor(anchor_row, anchor_col, left_col, right_col, top_row, bottom_row)
 Application.ScreenUpdating = True
 End Sub
 
