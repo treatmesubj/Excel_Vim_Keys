@@ -33,10 +33,10 @@ Movements to leftmost & rightmost populated cells in a row is most enjoyable adv
 |`{SPACE}`|move right|
 |`i`|edit cell|
 |`a`|edit cell|
-|`{SHIFT}`+`a`|edit cell right of rightmost value in row|
-|`{SHIFT}`+`i`|edit cell left of leftmost value in row|
+|`A`|edit cell right of rightmost value in row|
+|`I`|edit cell left of leftmost value in row|
 |`o`|insert row below|
-|`{SHIFT}`+`o`|insert row above|
+|`O`|insert row above|
 |`x`|delete|
 |`d`|cut|
 |`r`|replace cell contents|
@@ -44,13 +44,14 @@ Movements to leftmost & rightmost populated cells in a row is most enjoyable adv
 |`b`|move contiguous left|
 |`w`|move contiguous right|
 |`e`|move contiguous right|
-|`{SHIFT}`+`h`|move top of viewport|
+|`H`|move top of viewport|
 |`{CNTRL}`+`u`|move page-up|
-|`{SHIFT}`+`l`|move bottom of viewport|
+|`L`|move bottom of viewport|
 |`{CNTRL}`+`d`|move page-down|
 |`{SHIFT}`+`4`|move to rightmost value in row|
 |`0`|move to column `A` in row|
-|`{SHIFT}`+`-`|move to leftmost value in row|
+|`_`|move to leftmost value in row|
+|`^`|move to leftmost value in row|
 |`v`|start `visual` mode|
 |`p`|paste|
 |`P`|paste values|
@@ -58,7 +59,7 @@ Movements to leftmost & rightmost populated cells in a row is most enjoyable adv
 |`{CNTRL}`+`r`|redo|
 |`/`|search|
 |`n`|next search result|
-|`{SHIFT}`+`n`|previous search result|
+|`N`|previous search result|
 
 ### Visual Mode
 |key|action|
@@ -72,9 +73,10 @@ Movements to leftmost & rightmost populated cells in a row is most enjoyable adv
 |`b`|move contiguous left|
 |`w`|move contiguous right|
 |`e`|move contiguous right|
-|`{SHIFT}`+`4`|move to rightmost value in row|
+|`$`|move to rightmost value in row|
 |`0`|move to column `A` in row|
-|`{SHIFT}`+`-`|move to leftmost value in row|
+|`_`|move to leftmost value in row|
+|`^`|move to leftmost value in row|
 |`x`|delete|
 |`d`|cut|
 |`y`|copy|

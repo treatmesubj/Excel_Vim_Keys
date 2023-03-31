@@ -32,6 +32,7 @@ Sub setup_shortcuts()
   Application.OnKey "+4", "go_end_of_row_values" '$
   Application.OnKey "0", "go_begin_of_row"
   Application.OnKey "+-", "go_begin_of_row_values" '_
+  Application.OnKey "+6", "go_begin_of_row_values" '^
 
   Application.OnKey "v", "setup_v_mode_shortcuts" 
 
@@ -81,6 +82,7 @@ Sub setup_v_mode_shortcuts()
   Application.OnKey "+4", "'visual_end_of_row_values """ & anchor_row & """, " & anchor_col & " '" 
   Application.OnKey "0", "'visual_begin_of_row """ & anchor_row & """, " & anchor_col & " '"
   Application.OnKey "+-", "'visual_begin_of_row_values """ & anchor_row & """, " & anchor_col & " '"
+  Application.OnKey "+6", "'visual_begin_of_row_values """ & anchor_row & """, " & anchor_col & " '"
 
   Application.OnKey "x", "delete_selected"
   Application.OnKey "d", "cut_selected"
@@ -131,7 +133,8 @@ Sub teardown_shortcuts()
   Application.OnKey "+4"
   Application.OnKey "0"
   Application.OnKey "+-"
-  
+  Application.OnKey "+6"
+
   Application.OnKey "v"
 
   Application.OnKey "p"
