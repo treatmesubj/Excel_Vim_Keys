@@ -42,10 +42,8 @@ Public Sub edit_end()
 Application.ScreenUpdating = False
   Dim row As Long: Dim col As Long
   row = Selection.row
-  Cells(row, 16384).Select
-  col = Selection.End(xlToLeft).Column
+  col = Cells(row, 16384).End(xlToLeft).Column + 1
   Cells(row, col).Select
-  Call go_right
   Call edit_cell
 Application.ScreenUpdating = True
 End Sub
@@ -146,16 +144,15 @@ Application.ScreenUpdating = True
 End Sub
 
 Public Sub go_begin_of_row_values()
-Application.ScreenUpdating = False
-  Cells(Selection.Row, 1).Select 
-  If IsEmpty(Selection) Then
-    Call go_contiguous_right
-    If IsEmpty(Selection) Then
-      Cells(Selection.row, 1).Select
-    End If
+If IsEmpty(Cells(Selection.Row, 1)) Then
+  If IsEmpty(Cells(Selection.Row, 1).End(xlToRight))
+    Cells(Selection.Row, 1).Select 
+  Else
+    Cells(Selection.Row, 1).End(xlToRight).Select
   End If
-Application.ScreenUpdating = True
-Selection.Select ' screen update weirdness
+Else
+  Cells(Selection.Row, 1).Select 
+End If
 End Sub
 
 Public Sub visual_begin_of_row_values(anchor_row As Long, anchor_col As Long)
@@ -164,16 +161,13 @@ Application.ScreenUpdating = False
   Dim top_row As Long: top_row = Selection.row
   Dim bottom_row As Long: bottom_row = top_row + Selection.Rows.Count - 1
   Dim end_row As Long: Dim end_col As Long: Dim end_range As Range
-  Cells(anchor_row, 1).Select
-  If IsEmpty(Selection) Then
-    Dim sel_right_col As Long
-    sel_right_col = Selection.End(xlToRight).Column
-    Cells(anchor_row, sel_right_col).Select
-    If IsEmpty(Selection) Then
-      Cells(Selection.row, 1).Select
-    End If
+  Dim sel_right_col As Long
+  sel_right_col = Cells(anchor_row, 1).End(xlToRight).Column
+  If IsEmpty(Cells(anchor_row, sel_right_col)) Then ' nothing in row
+    end_col = 1
+  Else
+    end_col = sel_right_col
   End If
-  end_col = Selection.Column 
   If top_row < anchor_row Then
     Set end_range = Cells(top_row, end_col) 
   Else
@@ -190,9 +184,8 @@ Public Sub go_end_of_row_values()
 Application.ScreenUpdating = False
   Dim row As Long: Dim col As Long
   row = Selection.row
-  Cells(row, 16384).Select
-  col = Selection.End(xlToLeft).Column
-  Cells(row, col).Select ' idk why Excel doesn't scroll. I have to below
+  col = Cells(row, 16384).End(xlToLeft).Column
+  Cells(row, col).Select ' Excel doesn't scroll to end but it is nice to see, so I do below
   Dim vis_left As Long: Dim vis_width As Long: Dim vis_right As Long
   vis_left = ActiveWindow.VisibleRange.Column
   vis_width = ActiveWindow.VisibleRange.Columns.Count - 1
@@ -213,8 +206,7 @@ Application.ScreenUpdating = False
   Dim top_row As Long: top_row = Selection.row
   Dim bottom_row As Long: bottom_row = top_row + Selection.Rows.Count - 1
   Dim end_row As Long: Dim end_col As Long: Dim end_range As Range
-  Cells(anchor_row, 16384).Select
-  end_col = Selection.End(xlToLeft).Column
+  end_col = Cells(anchor_row, 16384).End(xlToLeft).Column
   If top_row < anchor_row Then
     Set end_range = Cells(top_row, end_col) 
   Else
@@ -225,6 +217,16 @@ Application.ScreenUpdating = False
   Dim right_col As Long: right_col = Selection.Columns.Count + left_col - 1
   Call auto_pivot_anchor(anchor_row, anchor_col, left_col, right_col, top_row, bottom_row)
 Application.ScreenUpdating = True
+End Sub
+
+Public Sub del_end_of_row_values()
+  Dim anchor_row As Long: Dim anchor_col As Long: Dim end_col As Long
+  anchor_row = Selection.Row: anchor_col = Selection.Column
+  end_col = Cells(anchor_row, 16384).End(xlToLeft).Column
+  If end_col >= anchor_col Then 
+    Call visual_end_of_row_values(anchor_row, anchor_col)
+    Call delete_selected
+  End If
 End Sub
 
 Public Sub go_bottom_of_viewport()
@@ -240,7 +242,7 @@ End Sub
 
 ' page up, down
 ' cannot use simple Application.SendKeys "{PGUP}"
-' because you annoyingly have to keep un/pressing <CONTROL> key
+' else you annoyingly have to keep un/pressing <CONTROL> key
 Public Sub page_up()
 Application.ScreenUpdating = False
   Dim row As Long: Dim col As Long: Dim rows_down As Long
