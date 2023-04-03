@@ -17,7 +17,7 @@ Sub setup_shortcuts()
 
   'Application.OnKey "dd", "delete_row"
   Application.OnKey "x", "delete_selected"
-  Application.OnKey "d", "cut_selected"
+  Application.OnKey "d", "delete_selected"
   Application.OnKey "+d", "del_end_of_row_values"
   Application.OnKey "r", "overwrite_cell"
   Application.OnKey "R", "overwrite_cell"
@@ -86,7 +86,7 @@ Sub setup_v_mode_shortcuts()
   Application.OnKey "+6", "'visual_begin_of_row_values """ & anchor_row & """, " & anchor_col & " '"
 
   Application.OnKey "x", "delete_selected"
-  Application.OnKey "d", "cut_selected"
+  Application.OnKey "d", "delete_selected"
   Application.OnKey "y", "copy_selected"
   Application.OnKey "P", "paste_values"
   Application.OnKey "p", "paste"
