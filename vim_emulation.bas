@@ -33,27 +33,22 @@ Public Sub edit_cell()
   Application.SendKeys "{F2}"
 End Sub
 Public Sub edit_begin()
+  ' TODO: don't sequencially call sendkeys
   Call go_begin_of_row_values
-  Call go_left
-  Call edit_cell
+  Selection.Offset(0, -1).Select
+  Application.SendKeys "{F2}"
   Application.SendKeys "{HOME}"
 End Sub
 Public Sub edit_end()
-Application.ScreenUpdating = False
-  Dim row As Long: Dim col As Long
-  row = Selection.row
-  col = Cells(row, 16384).End(xlToLeft).Column
-  If IsEmpty(Cells(row, col)) Then
-    Cells(row, col).Select
-  Else
-    Cells(row, col + 1).Select
-  End If
-  Call edit_cell
-Application.ScreenUpdating = True
+  ' TODO: don't sequencially call sendkeys
+  Call go_end_of_row_values
+  Selection.Offset(0, 1).Select
+  Application.SendKeys "{F2}"
+  Application.SendKeys "{HOME}"
 End Sub
 Public Sub overwrite_cell()
-  Call delete_selected
-  Call edit_cell
+  Selection.Clear
+  Application.SendKeys "{F2}"
 End Sub
 
 ' contiguous left, right
@@ -95,7 +90,7 @@ Public Sub delete_row()
   Application.SendKeys "{F2}"
 End Sub
 Public Sub delete_selected()
-  Application.SendKeys "{DEL}"
+  Selection.Clear
 End Sub
 
 ' auto pivot anchor back to pre-action corner
@@ -248,7 +243,7 @@ Public Sub del_end_of_row_values()
   end_col = Cells(anchor_row, 16384).End(xlToLeft).Column
   If end_col >= anchor_col Then 
     Call visual_end_of_row_values(anchor_row, anchor_col)
-    Call delete_selected
+    Selection.Clear
   End If
   Cells(anchor_row, anchor_col).Select
 End Sub
