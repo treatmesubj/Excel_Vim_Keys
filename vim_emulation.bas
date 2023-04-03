@@ -3,66 +3,66 @@ Option Explicit
 
 ' up, down, left, right
 Public Sub go_up()
-  Application.SendKeys "{UP}"
+  Application.SendKeys "{UP}", True
 End Sub
 Public Sub go_down()
-  Application.SendKeys "{DOWN}"
+  Application.SendKeys "{DOWN}", True
 End Sub
 Public Sub go_left()
-  Application.SendKeys "{LEFT}"
+  Application.SendKeys "{LEFT}", True
 End Sub
 Public Sub go_right()
-  Application.SendKeys "{RIGHT}"
+  Application.SendKeys "{RIGHT}", True
 End Sub
 ' visual up, down, left, right
 Public Sub visual_up()
-  Application.SendKeys "+{UP}"
+  Application.SendKeys "+{UP}", True
 End Sub
 Public Sub visual_down()
-  Application.SendKeys "+{DOWN}"
+  Application.SendKeys "+{DOWN}", True
 End Sub
 Public Sub visual_left()
-  Application.SendKeys "+{LEFT}"
+  Application.SendKeys "+{LEFT}", True
 End Sub
 Public Sub visual_right()
-  Application.SendKeys "+{RIGHT}"
+  Application.SendKeys "+{RIGHT}", True
 End Sub
 
 ' editing
 Public Sub edit_cell()
-  Application.SendKeys "{F2}"
+  Application.SendKeys "{F2}", True
 End Sub
 Public Sub edit_begin()
   ' TODO: don't sequencially call sendkeys
   Call go_begin_of_row_values
   Selection.Offset(0, -1).Select
-  Application.SendKeys "{F2}"
-  Application.SendKeys "{HOME}"
+  Application.SendKeys "{F2}", True
+  Application.SendKeys "{HOME}", True
 End Sub
 Public Sub edit_end()
   ' TODO: don't sequencially call sendkeys
   Call go_end_of_row_values
   Selection.Offset(0, 1).Select
-  Application.SendKeys "{F2}"
-  Application.SendKeys "{HOME}"
+  Application.SendKeys "{F2}", True
+  Application.SendKeys "{HOME}", True
 End Sub
 Public Sub overwrite_cell()
   Selection.Clear
-  Application.SendKeys "{F2}"
+  Application.SendKeys "{F2}", True
 End Sub
 
 ' contiguous left, right
 Public Sub go_contiguous_left()
-  Application.SendKeys "^{LEFT}"
+  Application.SendKeys "^{LEFT}", True
 End Sub
 Public Sub go_contiguous_right()
-  Application.SendKeys "^{RIGHT}"
+  Application.SendKeys "^{RIGHT}", True
 End Sub
 Public Sub visual_contiguous_left()
-  Application.SendKeys "^+{LEFT}"
+  Application.SendKeys "^+{LEFT}", True
 End Sub
 Public Sub visual_contiguous_right()
-  Application.SendKeys "^+{RIGHT}"
+  Application.SendKeys "^+{RIGHT}", True
 End Sub
 
 ' insert rows 
@@ -71,14 +71,14 @@ Public Sub insert_row_above()
   row = Selection.row
   Rows(row & ":" & row).EntireRow.Insert
   Cells(row, Selection.Column).Select
-  Application.SendKeys "{F2}"
+  Application.SendKeys "{F2}", True
 End Sub
 Public Sub insert_row_below()
   Dim row As Long
   row = Selection.row
   Rows(row + 1 & ":" & row + 1).EntireRow.Insert
   Cells(row + 1, Selection.Column).Select
-  Application.SendKeys "{F2}"
+  Application.SendKeys "{F2}", True
 End Sub
 
 ' delete rows, cells
@@ -87,7 +87,7 @@ Public Sub delete_row()
   row = Selection.row
   Rows(row & ":" & row).EntireRow.Delete
   Cells(row, Selection.Column).Select
-  Application.SendKeys "{F2}"
+  Application.SendKeys "{F2}", True
 End Sub
 Public Sub delete_selected()
   Selection.Clear
@@ -123,6 +123,20 @@ Public Sub go_begin_of_row()
   Cells(row, 1).Select
 End Sub
 
+Public Sub screen_scroller(anchor_col As Long, end_col As Long)
+  Dim vis_left As Long: Dim vis_width As Long: Dim vis_right As Long
+  vis_left = ActiveWindow.VisibleRange.Column
+  vis_width = ActiveWindow.VisibleRange.Columns.Count - 1
+  vis_right = vis_left + vis_width
+  If Not (vis_left < end_col And end_col < vis_right) Then
+    If end_col > anchor_col Then ' to right
+      ActiveWindow.ScrollColumn = end_col - vis_width + 2
+    Else                         ' to left
+      ActiveWindow.ScrollColumn = end_col
+    End If
+  End If
+End Sub
+
 Public Sub visual_begin_of_row(anchor_row As Long, anchor_col As Long)
 Application.ScreenUpdating = False
   Dim anchor_range As Range: Set anchor_range = Cells(anchor_row, anchor_col)
@@ -139,19 +153,7 @@ Application.ScreenUpdating = False
   Dim left_col As Long: left_col = Selection.Column
   Dim right_col As Long: right_col = Selection.Columns.Count + left_col - 1
   Call auto_pivot_anchor(anchor_row, anchor_col, left_col, right_col, top_row, bottom_row)
-' pivot sendkeys screenupdating lags?
-' TODO: sane screen update
-'  Dim vis_left As Long: Dim vis_width As Long: Dim vis_right As Long
-'  vis_left = ActiveWindow.VisibleRange.Column
-'  vis_width = ActiveWindow.VisibleRange.Columns.Count - 1
-'  vis_right = vis_left + vis_width
-'  If Not (vis_left < end_col And end_col < vis_right) Then
-'    If end_col > vis_width Then
-'      ActiveWindow.ScrollColumn = end_col - vis_width + 2
-'    Else
-'      ActiveWindow.ScrollColumn = end_col
-'    End If
-'  End If
+  Call screen_scroller(anchor_col, end_col)
 Application.ScreenUpdating = True
 End Sub
 
@@ -189,19 +191,7 @@ Application.ScreenUpdating = False
   Dim left_col As Long: left_col = Selection.Column
   Dim right_col As Long: right_col = Selection.Columns.Count + left_col - 1
   Call auto_pivot_anchor(anchor_row, anchor_col, left_col, right_col, top_row, bottom_row)
-' pivot sendkeys screenupdating lags?
-' TODO: sane screen update
-'  Dim vis_left As Long: Dim vis_width As Long: Dim vis_right As Long
-'  vis_left = ActiveWindow.VisibleRange.Column
-'  vis_width = ActiveWindow.VisibleRange.Columns.Count - 1
-'  vis_right = vis_left + vis_width
-'  If Not (vis_left < end_col And end_col < vis_right) Then
-'    If end_col > vis_width Then
-'      ActiveWindow.ScrollColumn = end_col - vis_width + 2
-'    Else
-'      ActiveWindow.ScrollColumn = end_col
-'    End If
-'  End If
+  Call screen_scroller(anchor_col, end_col)
 Application.ScreenUpdating = True
 End Sub
 
@@ -241,19 +231,7 @@ Application.ScreenUpdating = False
   Dim left_col As Long: left_col = Selection.Column
   Dim right_col As Long: right_col = Selection.Columns.Count + left_col - 1
   Call auto_pivot_anchor(anchor_row, anchor_col, left_col, right_col, top_row, bottom_row)
-' pivot sendkeys screenupdating lags?
-' TODO: sane screen update
-'  Dim vis_left As Long: Dim vis_width As Long: Dim vis_right As Long
-'  vis_left = ActiveWindow.VisibleRange.Column
-'  vis_width = ActiveWindow.VisibleRange.Columns.Count - 1
-'  vis_right = vis_left + vis_width
-'  If Not (vis_left < end_col And end_col < vis_right) Then
-'    If end_col > vis_width Then
-'      ActiveWindow.ScrollColumn = end_col - vis_width + 2
-'    Else
-'      ActiveWindow.ScrollColumn = end_col
-'    End If
-'  End If
+  Call screen_scroller(anchor_col, end_col)
 Application.ScreenUpdating = True
 End Sub
 
@@ -303,10 +281,10 @@ End Sub
 ' visual page up, down
 ' will settle for annoying "+{PGUP}" for now
 Public Sub visual_page_up()
-  Application.SendKeys "+{PGUP}"
+  Application.SendKeys "+{PGUP}", True
 End Sub
 Public Sub visual_page_down()
-  Application.SendKeys "+{PGDN}"
+  Application.SendKeys "+{PGDN}", True
 End Sub
 
 ' copy
@@ -338,10 +316,10 @@ End Sub
 
 ' undo & redo
 Public Sub undo()
-  Application.SendKeys "^z"
+  Application.SendKeys "^z", True
 End Sub
 Public Sub redo()
-  Application.SendKeys "^y"
+  Application.SendKeys "^y", True
 End Sub
 
 ' searching
