@@ -42,8 +42,12 @@ Public Sub edit_end()
 Application.ScreenUpdating = False
   Dim row As Long: Dim col As Long
   row = Selection.row
-  col = Cells(row, 16384).End(xlToLeft).Column + 1
-  Cells(row, col).Select
+  col = Cells(row, 16384).End(xlToLeft).Column
+  If IsEmpty(Cells(row, col)) Then
+    Cells(row, col).Select
+  Else
+    Cells(row, col + 1).Select
+  End If
   Call edit_cell
 Application.ScreenUpdating = True
 End Sub
