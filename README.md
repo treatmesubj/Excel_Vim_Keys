@@ -21,6 +21,8 @@ Movements to leftmost & rightmost populated cells in a row is most enjoyable adv
 5. In Excel Options `File > Options`, in dialog box section `Quick Access Toolbar`, `Choose commands from` Macros, add `setup_shortcuts` & `teardown_shortcuts`
     - Modify names & icons to preferrence; I use `vim_mode` with checkmark icon & `stop_vim` with cancel icon
 
+[Excel's cut is fake](https://superuser.com/questions/611854/prevent-excel-from-clearing-copied-data-for-pasting-after-certain-operations-w)
+
 # Keys
 ### Normal Mode
 |key|action|
@@ -39,6 +41,7 @@ Movements to leftmost & rightmost populated cells in a row is most enjoyable adv
 |`O`|insert row above|
 |`x`|delete|
 |`d`|cut|
+|`D`|clear row's cell contents from selected to right|
 |`r`|replace cell contents|
 |`R`|replace cell contents|
 |`b`|move contiguous left|
