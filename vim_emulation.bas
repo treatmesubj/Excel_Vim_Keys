@@ -181,7 +181,17 @@ Application.ScreenUpdating = False
   Call auto_pivot_anchor(anchor_row, anchor_col, left_col, right_col, top_row, bottom_row)
 ' pivot sendkeys screenupdating lags?
 ' TODO: sane screen update
-  ActiveWindow.ScrollColumn = end_col
+'  Dim vis_left As Long: Dim vis_width As Long: Dim vis_right As Long
+'  vis_left = ActiveWindow.VisibleRange.Column
+'  vis_width = ActiveWindow.VisibleRange.Columns.Count - 1
+'  vis_right = vis_left + vis_width
+'  If Not (vis_left < end_col And end_col < vis_right) Then
+'    If end_col > vis_width Then
+'      ActiveWindow.ScrollColumn = end_col - vis_width + 2
+'    Else
+'      ActiveWindow.ScrollColumn = end_col
+'    End If
+'  End If
 Application.ScreenUpdating = True
 End Sub
 
@@ -223,17 +233,17 @@ Application.ScreenUpdating = False
   Call auto_pivot_anchor(anchor_row, anchor_col, left_col, right_col, top_row, bottom_row)
 ' pivot sendkeys screenupdating lags?
 ' TODO: sane screen update
-  Dim vis_left As Long: Dim vis_width As Long: Dim vis_right As Long
-  vis_left = ActiveWindow.VisibleRange.Column
-  vis_width = ActiveWindow.VisibleRange.Columns.Count - 1
-  vis_right = vis_left + vis_width
-  If Not (vis_left < end_col And end_col < vis_right) Then
-    If end_col > vis_width Then
-      ActiveWindow.ScrollColumn = end_col - vis_width + 2
-    Else
-      ActiveWindow.ScrollColumn = end_col
-    End If
-  End If
+'  Dim vis_left As Long: Dim vis_width As Long: Dim vis_right As Long
+'  vis_left = ActiveWindow.VisibleRange.Column
+'  vis_width = ActiveWindow.VisibleRange.Columns.Count - 1
+'  vis_right = vis_left + vis_width
+'  If Not (vis_left < end_col And end_col < vis_right) Then
+'    If end_col > vis_width Then
+'      ActiveWindow.ScrollColumn = end_col - vis_width + 2
+'    Else
+'      ActiveWindow.ScrollColumn = end_col
+'    End If
+'  End If
 Application.ScreenUpdating = True
 End Sub
 
