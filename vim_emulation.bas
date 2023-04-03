@@ -145,7 +145,7 @@ End Sub
 
 Public Sub go_begin_of_row_values()
 If IsEmpty(Cells(Selection.Row, 1)) Then
-  If IsEmpty(Cells(Selection.Row, 1).End(xlToRight))
+  If IsEmpty(Cells(Selection.Row, 1).End(xlToRight)) Then
     Cells(Selection.Row, 1).Select 
   Else
     Cells(Selection.Row, 1).End(xlToRight).Select
