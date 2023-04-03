@@ -144,6 +144,9 @@ Application.ScreenUpdating = False
   Dim left_col As Long: left_col = Selection.Column
   Dim right_col As Long: right_col = Selection.Columns.Count + left_col - 1
   Call auto_pivot_anchor(anchor_row, anchor_col, left_col, right_col, top_row, bottom_row)
+' pivot sendkeys screenupdating lags?
+' TODO: sane screen update
+  ActiveWindow.ScrollColumn = left_col
 Application.ScreenUpdating = True
 End Sub
 
@@ -181,6 +184,9 @@ Application.ScreenUpdating = False
   Dim left_col As Long: left_col = Selection.Column
   Dim right_col As Long: right_col = Selection.Columns.Count + left_col - 1
   Call auto_pivot_anchor(anchor_row, anchor_col, left_col, right_col, top_row, bottom_row)
+' pivot sendkeys screenupdating lags?
+' TODO: sane screen update
+  ActiveWindow.ScrollColumn = left_col
 Application.ScreenUpdating = True
 End Sub
 
@@ -220,6 +226,19 @@ Application.ScreenUpdating = False
   Dim left_col As Long: left_col = Selection.Column
   Dim right_col As Long: right_col = Selection.Columns.Count + left_col - 1
   Call auto_pivot_anchor(anchor_row, anchor_col, left_col, right_col, top_row, bottom_row)
+' pivot sendkeys screenupdating lags?
+' TODO: sane screen update
+  Dim vis_left As Long: Dim vis_width As Long: Dim vis_right As Long
+  vis_left = ActiveWindow.VisibleRange.Column
+  vis_width = ActiveWindow.VisibleRange.Columns.Count - 1
+  vis_right = vis_left + vis_width
+  If Not (vis_left < end_col And end_col < vis_right) Then
+    If end_col > vis_width Then
+      ActiveWindow.ScrollColumn = end_col - vis_width + 2
+    Else
+      ActiveWindow.ScrollColumn = end_col
+    End If
+  End If
 Application.ScreenUpdating = True
 End Sub
 
@@ -231,6 +250,7 @@ Public Sub del_end_of_row_values()
     Call visual_end_of_row_values(anchor_row, anchor_col)
     Call delete_selected
   End If
+  Cells(anchor_row, anchor_col).Select
 End Sub
 
 Public Sub go_bottom_of_viewport()
