@@ -96,16 +96,16 @@ End Sub
 ' auto pivot anchor back to pre-action corner
 Public Sub auto_pivot_anchor(anchor_row As Long, anchor_col As Long, left_col As Long, right_col As Long, top_row As Long, bottom_row As Long)
   If top_row < anchor_row Then
-    Application.SendKeys "^."
+    Application.SendKeys "^.", True
     If right_col > anchor_col Then
-      Application.SendKeys "^."
+      Application.SendKeys "^.", True
     End If
     If left_col = anchor_col And left_col <> right_col Then
-      Application.SendKeys "^."
+      Application.SendKeys "^.", True
     End If
   End If
   If left_col < anchor_col Then
-    Application.SendKeys "^."
+    Application.SendKeys "^.", True
   End If
 End Sub
 
@@ -141,7 +141,7 @@ Application.ScreenUpdating = False
   Call auto_pivot_anchor(anchor_row, anchor_col, left_col, right_col, top_row, bottom_row)
 ' pivot sendkeys screenupdating lags?
 ' TODO: sane screen update
-  ActiveWindow.ScrollColumn = left_col
+  ActiveWindow.ScrollColumn = end_col
 Application.ScreenUpdating = True
 End Sub
 
@@ -181,7 +181,7 @@ Application.ScreenUpdating = False
   Call auto_pivot_anchor(anchor_row, anchor_col, left_col, right_col, top_row, bottom_row)
 ' pivot sendkeys screenupdating lags?
 ' TODO: sane screen update
-  ActiveWindow.ScrollColumn = left_col
+  ActiveWindow.ScrollColumn = end_col
 Application.ScreenUpdating = True
 End Sub
 
