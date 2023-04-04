@@ -3,7 +3,7 @@ Too cool to use Excel, too amateur to escape it\
 ![](./extra/typing.gif)
 
 Excel shortcuts can be used in conjunction w/ Vim keys\
-Nearly all Excel `{CNTRL}` & `{SHIFT}` shortcuts are unaffected (excl. underline & auto-fill-right)\
+Nearly all Excel `{CNTRL}` & `{SHIFT}` shortcuts are unaffected
 Excel `{ALT}` shortcuts are unaffected
 
 Movements to leftmost & rightmost populated cells in a row is most enjoyable advantage
@@ -16,7 +16,7 @@ Movements to leftmost & rightmost populated cells in a row is most enjoyable adv
 1. If Excel Developer tab isn't enabled yet, [enable it in Excel Options](https://support.microsoft.com/en-us/office/show-the-developer-tab-e1192344-5e56-4d45-931b-e5fd9bea2d45)
 2. In a new Excel file, from Developer tab, in Visual Basic editor, create 2 modules `vim_emulation` & `vim_shortcuts` and paste in corresponding contents of sub procedures from [vim\_emulation.bas](vim_emulation.bas) & [vim\_shortcuts.bas](vim_shortcuts.bas)
 3. Save-As the Excel file as `Excel Add-in (*.xlam)`
-    - Default location is `~\AppData\Roaming\Microsoft\AddIns\<file-name>.xlam`
+    - Default location on Windows is `~\AppData\Roaming\Microsoft\AddIns\<file-name>.xlam`
 4. In an Excel file, from Developer tab, in Excel Add-ins, browse for & add the Excel Add-in
 5. In Excel Options `File > Options`, in dialog box section `Quick Access Toolbar`, `Choose commands from` Macros, add `setup_shortcuts` & `teardown_shortcuts`
     - Modify names & icons to preferrence; I use `vim_mode` with checkmark icon & `stop_vim` with cancel icon
