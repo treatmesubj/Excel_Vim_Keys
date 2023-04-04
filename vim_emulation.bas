@@ -93,22 +93,34 @@ Public Sub delete_selected()
   Selection.Clear
 End Sub
 
-' auto pivot anchor back to pre-action corner
-Public Sub auto_pivot_anchor(anchor_row As Long, anchor_col As Long, left_col As Long, right_col As Long, top_row As Long, bottom_row As Long)
-  If top_row < anchor_row Then
-    Application.SendKeys "^.", True
-    If right_col > anchor_col Then
-      Application.SendKeys "^.", True
-    End If
-    If left_col = anchor_col And left_col <> right_col Then
-      Application.SendKeys "^.", True
-    End If
-  End If
-  If left_col < anchor_col Then
-    Application.SendKeys "^.", True
+' rotate Selection's active cell/anchor clockwise 1 corner
+Public Sub rotate_anchor()
+  If ActiveCell.Row = Selection.Row And ActiveCell.Column < Selection.Column + Selection.Columns.Count - 1 Then
+    Selection.Cells(1, Selection.Columns.Count).Activate
+  ElseIf ActiveCell.Row = Selection.Row Then
+    Selection.Cells(Selection.Rows.Count, Selection.Columns.Count).Activate
+  ElseIf (ActiveCell.Row = (Selection.Row + Selection.Rows.Count - 1)) And (Selection.Column < ActiveCell.Column) Then
+    Selection.Cells(Selection.Rows.Count, 1).Activate
+  Else
+    Selection.Cells(1, 1).Activate
   End If
 End Sub
 
+' auto pivot anchor back to pre-action corner
+Public Sub auto_rotate_anchor(anchor_row As Long, anchor_col As Long, left_col As Long, right_col As Long, top_row As Long, bottom_row As Long)
+  If top_row < anchor_row Then
+    Call rotate_anchor
+    If right_col > anchor_col Then
+      Call rotate_anchor
+    End If
+    If left_col = anchor_col And left_col <> right_col Then
+      Call rotate_anchor
+    End If
+  End If
+  If left_col < anchor_col Then
+    Call rotate_anchor
+  End If
+End Sub
 
 '
 ' big movements
@@ -152,7 +164,7 @@ Application.ScreenUpdating = False
   Range(anchor_range, end_range).Select
   Dim left_col As Long: left_col = Selection.Column
   Dim right_col As Long: right_col = Selection.Columns.Count + left_col - 1
-  Call auto_pivot_anchor(anchor_row, anchor_col, left_col, right_col, top_row, bottom_row)
+  Call auto_rotate_anchor(anchor_row, anchor_col, left_col, right_col, top_row, bottom_row)
   Call screen_scroller(anchor_col, end_col)
 Application.ScreenUpdating = True
 End Sub
@@ -190,7 +202,7 @@ Application.ScreenUpdating = False
   Range(anchor_range, end_range).Select
   Dim left_col As Long: left_col = Selection.Column
   Dim right_col As Long: right_col = Selection.Columns.Count + left_col - 1
-  Call auto_pivot_anchor(anchor_row, anchor_col, left_col, right_col, top_row, bottom_row)
+  Call auto_rotate_anchor(anchor_row, anchor_col, left_col, right_col, top_row, bottom_row)
   Call screen_scroller(anchor_col, end_col)
 Application.ScreenUpdating = True
 End Sub
@@ -230,7 +242,7 @@ Application.ScreenUpdating = False
   Range(anchor_range, end_range).Select
   Dim left_col As Long: left_col = Selection.Column
   Dim right_col As Long: right_col = Selection.Columns.Count + left_col - 1
-  Call auto_pivot_anchor(anchor_row, anchor_col, left_col, right_col, top_row, bottom_row)
+  Call auto_rotate_anchor(anchor_row, anchor_col, left_col, right_col, top_row, bottom_row)
   Call screen_scroller(anchor_col, end_col)
 Application.ScreenUpdating = True
 End Sub
