@@ -247,6 +247,7 @@ Application.ScreenUpdating = False
 Application.ScreenUpdating = True
 End Sub
 
+' TODO, just del everything right of selected?
 Public Sub del_end_of_row_values()
   Dim anchor_row As Long: Dim anchor_col As Long: Dim end_col As Long
   anchor_row = Selection.Row: anchor_col = Selection.Column
@@ -291,7 +292,7 @@ Application.ScreenUpdating = False
 Application.ScreenUpdating = True
 End Sub
 ' visual page up, down
-' will settle for annoying "+{PGUP}" for now
+' TODO: replace annoying "+{PGUP}", easy to accidentally delete
 Public Sub visual_page_up()
   Application.SendKeys "+{PGUP}", True
 End Sub

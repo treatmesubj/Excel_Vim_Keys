@@ -3,7 +3,7 @@ Too cool to use Excel, too amateur to escape it\
 ![](./extra/typing.gif)
 
 Excel shortcuts can be used in conjunction w/ Vim keys\
-Nearly all Excel `{CNTRL}` & `{SHIFT}` shortcuts are unaffected
+Nearly all Excel `{CTRL}` & `{SHIFT}` shortcuts are unaffected
 Excel `{ALT}` shortcuts are unaffected
 
 Movements to leftmost & rightmost populated cells in a row is most enjoyable advantage
@@ -48,9 +48,9 @@ Movements to leftmost & rightmost populated cells in a row is most enjoyable adv
 |`w`|move contiguous right|
 |`e`|move contiguous right|
 |`H`|move top of viewport|
-|`{CNTRL}`+`u`|move page-up|
+|`{CTRL}`+`u`|move page-up|
 |`L`|move bottom of viewport|
-|`{CNTRL}`+`d`|move page-down|
+|`{CTRL}`+`d`|move page-down|
 |`{SHIFT}`+`4`|move to rightmost value in row|
 |`0`|move to column `A` in row|
 |`_`|move to leftmost value in row|
@@ -59,7 +59,7 @@ Movements to leftmost & rightmost populated cells in a row is most enjoyable adv
 |`p`|paste|
 |`P`|paste values|
 |`u`|undo|
-|`{CNTRL}`+`r`|redo|
+|`{CTRL}`+`r`|redo|
 |`/`|search|
 |`n`|next search result|
 |`N`|previous search result|
@@ -85,8 +85,8 @@ Movements to leftmost & rightmost populated cells in a row is most enjoyable adv
 |`y`|copy|
 |`p`|paste|
 |`P`|paste values|
-|`{CNTRL}`+`u`|move page-up|
-|`{CNTRL}`+`d`|move page-down|
+|`{CTRL}`+`u`|move page-up|
+|`{CTRL}`+`d`|move page-down|
 |`v`|exit visual mode to normal mode|
 |`{ESC}`|exit visual mode to normal mode|
 
