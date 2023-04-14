@@ -51,7 +51,7 @@ Movements to leftmost & rightmost populated cells in a row is most enjoyable adv
 |`{CTRL}`+`u`|move page-up|
 |`L`|move bottom of viewport|
 |`{CTRL}`+`d`|move page-down|
-|`{SHIFT}`+`4`|move to rightmost value in row|
+|`$`|move to rightmost value in row|
 |`0`|move to column `A` in row|
 |`_`|move to leftmost value in row|
 |`^`|move to leftmost value in row|
