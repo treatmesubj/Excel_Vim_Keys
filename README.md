@@ -3,7 +3,7 @@ Too cool to use Excel, too amateur to escape it\
 ![](./extra/typing.gif)
 
 Excel shortcuts can be used in conjunction w/ Vim keys\
-Nearly all Excel `{CTRL}` & `{SHIFT}` shortcuts are unaffected
+Nearly all Excel `{CTRL}` & `{SHIFT}` shortcuts are unaffected\
 Excel `{ALT}` shortcuts are unaffected
 
 Movements to leftmost & rightmost populated cells in a row is most enjoyable advantage
