@@ -92,6 +92,10 @@ End Sub
 Public Sub delete_selected()
   Selection.Clear
 End Sub
+Public Sub vis_delete_selected()
+  Selection.Clear
+  Call teardown_v_mode_shortcuts
+End Sub
 
 ' rotate Selection's active cell/anchor clockwise 1 corner
 Public Sub rotate_anchor()
@@ -301,7 +305,7 @@ Public Sub visual_page_down()
 End Sub
 
 ' copy
-Public Sub copy_selected()
+Public Sub vis_copy_selected()
   Selection.Copy
   Call teardown_v_mode_shortcuts
 End Sub
