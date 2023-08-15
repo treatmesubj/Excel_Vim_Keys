@@ -35,6 +35,7 @@ Sub setup_shortcuts()
   Application.OnKey "+6", "go_begin_of_row_values" '^
 
   Application.OnKey "v", "setup_v_mode_shortcuts" 
+  Application.OnKey "+v", "setup_v_mode_shortcuts"
 
   Application.OnKey "P", "paste_values"
   Application.OnKey "p", "paste"
@@ -138,6 +139,7 @@ Sub teardown_shortcuts()
   Application.OnKey "+6"
 
   Application.OnKey "v"
+  Application.OnKey "+v"
 
   Application.OnKey "p"
 

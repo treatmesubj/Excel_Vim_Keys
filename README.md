@@ -55,6 +55,7 @@ Movements to leftmost & rightmost populated cells in a row is most enjoyable adv
 |`_`|move to leftmost value in row|
 |`^`|move to leftmost value in row|
 |`v`|start `visual` mode|
+|`V`|start `visual` mode|
 |`p`|paste|
 |`P`|paste values|
 |`u`|undo|
